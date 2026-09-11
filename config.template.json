@@ -1,0 +1,258 @@
+{
+  "user": {
+    "full_name": "Your Name",
+    "first_name": "Your",
+    "name_variants": [
+      "Your Name",
+      "Your"
+    ],
+    "self_entities": [
+      "Your Name"
+    ],
+    "role_description": "",
+    "timezone": "America/Los_Angeles",
+    "secondary_timezone": ""
+  },
+  "accounts": [
+    {
+      "provider": "google",
+      "email": "you@gmail.com",
+      "label": "Gmail",
+      "is_primary": true,
+      "sent_folder_id": ""
+    },
+    {
+      "provider": "microsoft",
+      "email": "you@yourcompany.com",
+      "label": "Outlook",
+      "is_primary": false,
+      "sent_folder_id": ""
+    }
+  ],
+  "obsidian": {
+    "vault_path": "~/Documents/van-gogh-vault",
+    "hotcache_relpath": "wiki/hotcache.md",
+    "sources_relpath": "wiki/sources",
+    "weekly_relpath": "wiki/weekly",
+    "entities_relpath": "wiki/entities",
+    "hotcache_action_items_heading": "Your Action Items",
+    "hotcache_active_threads_heading": "Active Threads",
+    "voice_guide_relpath": "wiki/sources/voice-guide.md",
+    "tone_profile_relpath": "wiki/sources/tone-profile.md",
+    "voice_snapshot_relpath": "wiki/sources/Voice Snapshot.md",
+    "voice_drafts_relpath": "wiki/sources/voice-drafts.md",
+    "relationship_radar_relpath": "wiki/sources/relationship-radar.md"
+  },
+  "businesses": [
+    {
+      "tag": "personal",
+      "display_name": "Personal",
+      "project_page": "wiki/projects/Personal.md",
+      "meeting_route": "10-Personal/Meetings",
+      "keywords": [],
+      "priorities": []
+    }
+  ],
+  "clients": [
+    {
+      "tag": "client-one",
+      "display_name": "Client One",
+      "recipient_name": "Recipient Name",
+      "recipient_email": "recipient@client.com",
+      "from_account": "Gmail",
+      "sources": [
+        "email",
+        "slack",
+        "meetings"
+      ],
+      "report_dir": "wiki/clients/Client One/5-15",
+      "signoff": "Your Name\nTitle\n555-555-5555",
+      "keywords": [
+        "client one",
+        "deal name",
+        "key contact"
+      ],
+      "contract": {
+        "counterparty": "Client One, Inc.",
+        "term": "Jan 1 \u2013 Dec 31, 2026",
+        "retainer": "$0K/mo",
+        "engagement": "Strategic advisor (full scope)",
+        "priorities": [
+          {
+            "name": "Top priority workstream",
+            "detail": "What you lead and the objective it serves."
+          }
+        ],
+        "value_levers": [
+          "How you earn beyond retainer (performance comp, commission, bonus)"
+        ],
+        "out_of_scope": [
+          "Work the engagement explicitly excludes"
+        ]
+      }
+    }
+  ],
+  "notetaker": {
+    "_comment": "Which AI meeting notetaker to read from. One at a time. Registered providers: granola, grain. Empty = infer from whichever API key is set in ~/.config/van-gogh/.env (GRANOLA_API_KEY / GRAIN_API_KEY).",
+    "provider": ""
+  },
+  "email_filters": {
+    "internal_domains": [],
+    "internal_team_emails": [],
+    "internal_team_names": [],
+    "allow_domains": [],
+    "extra_spam_fragments": [],
+    "deal_critical_domains": []
+  },
+  "digest": {
+    "enabled": false,
+    "sender_label": "",
+    "recipient_email": "",
+    "briefings": {
+      "morning-coffee": {
+        "enabled": true,
+        "days": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday"
+        ],
+        "time": "07:00"
+      },
+      "afternoon-tea": {
+        "enabled": true,
+        "days": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday"
+        ],
+        "time": "13:00"
+      },
+      "week": {
+        "enabled": true,
+        "days": [
+          "monday"
+        ],
+        "time": "07:00"
+      },
+      "week-retro": {
+        "enabled": true,
+        "days": [
+          "friday"
+        ],
+        "time": "07:00"
+      }
+    }
+  },
+  "kpi": {
+    "enabled": false,
+    "day": "friday",
+    "time": "16:00",
+    "window_days": 14,
+    "recipient_email": "",
+    "share_with_support": false
+  },
+  "finance": {
+    "enabled": false,
+    "day": "monday",
+    "time": "07:00",
+    "recipient_email": "",
+    "company_id": "",
+    "company_name": "",
+    "commentary": true
+  },
+  "contact_capture": {
+    "enabled": false,
+    "day": "sunday",
+    "time": "05:00",
+    "window_days": 14
+  },
+  "meeting_prep": {
+    "_comment": "Prep emails before a call. Off until you ask for them. Mode 'each' mails one prep per meeting, lead_minutes ahead; mode 'daily' mails one email covering the whole day at daily_time. Sender and recipient come from the digest block.",
+    "enabled": false,
+    "mode": "each",
+    "lead_minutes": 60,
+    "daily_time": "07:00",
+    "internal_only": false
+  },
+  "notes": {
+    "_comment": "The watcher between briefings. Every fifteen minutes it checks whether a counterparty replied on a front-page item, said a deal is off, or moved today's meeting, and mails you a Note with the reply already drafted. Off until you ask. At most daily_cap a day (the rest fold into Afternoon Tea), only between from and until, local time, never during a meeting. Sender and recipient come from the digest block.",
+    "enabled": false,
+    "daily_cap": 2,
+    "from": "07:30",
+    "until": "18:00"
+  },
+  "workbench": {
+    "port": 8765,
+    "email_mode": "send",
+    "logo_fetch": true,
+    "open_on_run": true,
+    "chat_model": ""
+  },
+  "briefing": {
+    "front_page_cap": 7,
+    "functions": [
+      "Sales",
+      "Finance",
+      "Accounting",
+      "Legal",
+      "People",
+      "Operations",
+      "Product",
+      "Admin",
+      "Other"
+    ],
+    "function_keywords": {},
+    "publish_page": true
+  },
+  "travel": {
+    "_comment": "Flight notices in the morning briefing. Trips are read from calendar events whose location names an airport code. Your home address is NOT set here: it goes in the private ~/.config/van-gogh/.env as VAN_GOGH_HOME_ADDRESS, because this file is synced into your vault and published.",
+    "enabled": true,
+    "airport_buffer_minutes": 90,
+    "weather_lead_days": 2
+  },
+  "support": {
+    "team_email": "",
+    "alerts_enabled": false,
+    "alert_cooldown_days": 7,
+    "job_watch_enabled": true,
+    "job_watch_kick_cap": 3,
+    "repair_agent_enabled": true,
+    "task_stall_enabled": true
+  },
+  "relationship_radar": {
+    "yellow_days": 30,
+    "red_days": 60,
+    "yellow_draft_cap": 5,
+    "skip_tags": [
+      "company",
+      "org",
+      "entity",
+      "utility",
+      "acquisition-target",
+      "investment-sponsor",
+      "pe",
+      "stub"
+    ],
+    "skip_entity_names": []
+  },
+  "follow_ups": {
+    "memory_path": "",
+    "horizon_days": 4
+  },
+  "podcasts": {
+    "feeds": {}
+  },
+  "judgment": {
+    "enabled": true,
+    "model": ""
+  },
+  "memory_sync": {
+    "enabled": false,
+    "claude_project_dirs": [],
+    "target_relpath": "wiki/memory"
+  }
+}

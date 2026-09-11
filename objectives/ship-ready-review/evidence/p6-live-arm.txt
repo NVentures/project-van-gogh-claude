@@ -1,0 +1,41 @@
+=== LIVE (judgment on) ===
+
+[things] 10/10 correct
+     QX Corp redline v4                                 expected keep   got keep
+     QX Corp signature page                             expected keep   got keep
+     Northwind diligence list                           expected keep   got keep
+     Northwind kickoff timing                           expected keep   got keep
+     QX Corp counterparty intro                         expected keep   got keep
+     Acme office furniture invoice                      expected demote got demote  (Office furniture billing, unrelated to either deal.)
+     Acme parking policy update                         expected demote got demote  (Parking policy is internal admin, not deal work.)
+     Acme holiday party RSVP                            expected demote got demote  (Social RSVP with no bearing on either close.)
+     Acme printer toner reorder                         expected demote got demote  (Office supply reorder, nothing to do with the deals.)
+     Acme contract expires 2026-09-30                   expected keep   got keep
+
+[intentions] 10/10 correct
+     Acme redline attached, need signature by Friday    expected keep   got keep
+     Widget deal term sheet from the buyer              expected keep   got keep
+     Acme new lead from the conference                  expected keep   got keep
+     Widget team offsite planning                       expected keep   got keep
+     Acme salary review for the sales team              expected keep   got keep
+     Acme two engineers resigned this week              expected keep   got keep
+     Acme office furniture invoice                      expected demote got demote  (Routine office expense, unrelated to deals or morale.)
+     Widget parking policy update                       expected demote got demote  (Facilities admin notice, not a real morale or deal issue.)
+     Acme printer toner reorder                         expected demote got demote  (Supply reorder with no bearing on either priority.)
+     Widget building fire drill notice                  expected demote got demote  (Building safety routine, unrelated to deals or team happiness.)
+
+[none] 10/10 correct
+     Acme anything at all                               expected keep   got keep
+     Widget anything at all                             expected keep   got keep
+     Acme office furniture invoice                      expected keep   got keep
+     Widget printer toner reorder                       expected keep   got keep
+     Acme redline needs signature                       expected keep   got keep
+     Widget parking policy                              expected keep   got keep
+     Acme holiday party                                 expected keep   got keep
+     Widget fire drill                                  expected keep   got keep
+     Acme lead from conference                          expected keep   got keep
+     Widget offsite planning                            expected keep   got keep
+
+TOTAL 30/30 correct, 0 kept items hidden
+
+no guard violations

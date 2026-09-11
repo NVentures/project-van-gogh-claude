@@ -1,0 +1,10 @@
+model: claude-opus-5
+priorities: ['grow the pipeline', 'keep the team happy']
+
+item 0: Redline attached, need signature by Friday
+  verdict: {"relevant": true, "priority": "grow the pipeline", "reason": "A deal is closing Friday and needs a signature, which is pipeline growth."}
+
+item 1: Your monthly newsletter is here
+  verdict: {"relevant": false, "priority": "", "reason": "Generic marketing newsletter with no bearing on deals or the team."}
+
+degraded: False

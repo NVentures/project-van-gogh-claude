@@ -1,0 +1,92 @@
+==============================================================================
+Client A: a dealmaker who wrote priorities as things
+==============================================================================
+
+──────────────────────────────────────────────
+DEALS
+──────────────────────────────────────────────
+
+Close Northwind
+  Late:               · [ ] Northwind redline v4 needs your signature · from
+                          Dana Ruiz · 4 days late
+
+Close QX Corp
+  Waiting on you:     · [ ] QX Corp diligence list · from Ray Okafor · 6 days
+                          ago
+
+Build the referral pipeline
+  Older, still open:  · [ ] Referral pipeline intro from the conference · from
+                          Chris Vale · 16 days ago
+
+──────────────────────────────────────────────
+OPERATIONS
+──────────────────────────────────────────────
+
+Hire two engineers
+  Waiting on you:     · [ ] Hiring: two engineering candidates for review ·
+                          from Priya N. · 3 days ago
+
+Everything else here
+  Waiting on you:     · [ ] Payroll provider renewal quote · from Payroll Co ·
+                          2 days ago
+  Older, still open:  · [ ] Office furniture invoice 4471 · from Furnish Co ·
+                          33 days ago
+
+──────────────────────────────────────────────
+PERSONAL
+──────────────────────────────────────────────
+
+  Older, still open:  · [ ] School fundraiser volunteer signup · 21 days ago
+
+
+I am guessing at what matters in Personal. Tell me once and I will file it
+right from now on: run /van-gogh:update-settings
+
+
+==============================================================================
+Client B: an advisor who wrote priorities as intentions
+==============================================================================
+
+──────────────────────────────────────────────
+ADVISORY
+──────────────────────────────────────────────
+
+grow the pipeline
+  Late:               · [ ] Meridian term sheet, countersignature was due
+                          Friday · from Ana Beltre · 1 day late
+
+keep the team happy
+  Waiting on you:     · [ ] Kestrel: two engineers gave notice this week ·
+                          from Kestrel HR · 2 days ago
+
+──────────────────────────────────────────────
+BOARD SEAT
+──────────────────────────────────────────────
+
+  Older, still open:  · [ ] Board packet for the October meeting · from Board
+                          Admin · 12 days ago
+
+
+I am guessing at what matters in Board Seat. Tell me once and I will file it
+right from now on: run /van-gogh:update-settings
+
+
+==============================================================================
+Client C: someone on day one who has set nothing up
+==============================================================================
+
+──────────────────────────────────────────────
+TODAY
+──────────────────────────────────────────────
+
+  Late:               · [ ] Contract needs your signature by Friday · from
+                          Legal · 2 days late
+  Waiting on you:     · [ ] Invoice for last month · from Bookkeeper · 1 day
+                          ago
+
+
+Nothing is set up yet, so this is everything I found. Tell me what you
+actually work on and tomorrow's briefing sorts itself: run
+/van-gogh:update-settings
+
+

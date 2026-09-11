@@ -1,0 +1,8 @@
+[priorities in config] suite went RED, caught by tests/test_config_matrix.py::test_one_bucket_one_priority
+[the demotion] suite went RED, caught by tests/test_week_review_priorities.py::test_in_bucket_item_missing_every_priority_is_demoted
+[the deadline guard] suite went RED, caught by tests/test_priority_judge.py::test_days_late_counts_as_a_deadline
+[the blind-bucket guard] suite went RED, caught by tests/test_week_review_priorities.py::test_bucket_where_nothing_matched_demotes_nothing
+[nudges] suite went RED, caught by tests/test_follow_up_radar.py::test_overdue_excludes_done_and_future_items
+
+restored, suite green: True
+RESULT: PASS

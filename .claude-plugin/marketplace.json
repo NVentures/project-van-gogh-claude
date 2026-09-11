@@ -1,0 +1,13 @@
+{
+  "name": "van-gogh",
+  "description": "NVentures marketplace for the Project Van Gogh chief-of-staff plugin.",
+  "owner": { "name": "NVentures" },
+  "plugins": [
+    {
+      "name": "van-gogh",
+      "description": "Personal chief of staff: daily/weekly briefings, meeting prep, meeting-notes ingestion, relationship radar, and voice tools wired into your Obsidian vault.",
+      "author": { "name": "Nobel Chang and Wesley Chang" },
+      "source": "./"
+    }
+  ]
+}

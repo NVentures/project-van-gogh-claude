@@ -1,0 +1,15 @@
+# Installed into the stable per-user venv at ~/.config/van-gogh/venv via:
+#   python3 -m venv ~/.config/van-gogh/venv && ~/.config/van-gogh/venv/bin/python -m pip install -r requirements.txt
+# (outside the plugin cache so plugin updates never delete it; dev checkouts
+# use a repo-root .venv for pytest — see CLAUDE.md)
+requests
+python-dotenv
+google-auth-oauthlib
+google-api-python-client
+google-auth-httplib2
+msal
+certifi
+python-docx>=1.2.0
+python-pptx>=1.0.0
+tzdata>=2026.2
+pytest>=8

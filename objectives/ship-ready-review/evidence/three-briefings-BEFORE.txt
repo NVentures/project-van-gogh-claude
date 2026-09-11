@@ -1,0 +1,95 @@
+==============================================================================
+Client A: a dealmaker who wrote priorities as things
+==============================================================================
+
+──────────────────────────────────────────────
+DEALS
+──────────────────────────────────────────────
+
+Close Northwind
+  Late:            · [ ] Northwind redline v4 needs your signature · 4 days
+                       late
+
+Close QX Corp
+  Waiting on you:  · [ ] QX Corp diligence list
+
+Build the referral pipeline
+  · nothing moving on this
+
+──────────────────────────────────────────────
+OPERATIONS
+──────────────────────────────────────────────
+
+Hire two engineers
+  Waiting on you:  · [ ] Hiring: two engineering candidates for review
+
+Everything else
+  Waiting on you:  · [ ] Payroll provider renewal quote
+
+──────────────────────────────────────────────
+PERSONAL · you have not said what matters here yet
+──────────────────────────────────────────────
+
+Everything else
+  Worth a look:    · [ ] School fundraiser volunteer signup
+
+──────────────────────────────────────────────
+NOT SORTED · these did not match any part of your work
+──────────────────────────────────────────────
+
+Everything else
+  Worth a look:    · [ ] Office furniture invoice 4471
+                   · [ ] Referral pipeline intro from the conference
+
+
+==============================================================================
+Client B: an advisor who wrote priorities as intentions
+==============================================================================
+
+──────────────────────────────────────────────
+ADVISORY
+──────────────────────────────────────────────
+
+grow the pipeline
+  Late:            · [ ] Meridian term sheet, countersignature needed by
+                       Friday · 1 day late
+
+keep the team happy
+  Waiting on you:  · [ ] Kestrel: two engineers gave notice this week
+
+──────────────────────────────────────────────
+BOARD SEAT · you have not said what matters here yet
+──────────────────────────────────────────────
+
+Everything else
+  Worth a look:    · [ ] Board packet for the October meeting
+
+──────────────────────────────────────────────
+NOT SORTED · these did not match any part of your work
+──────────────────────────────────────────────
+
+Everything else
+  Worth a look:    · [ ] Building fire drill notice
+
+
+==============================================================================
+Client C: someone on day one who has set nothing up
+==============================================================================
+
+──────────────────────────────────────────────
+PERSONAL · you have not said what matters here yet
+──────────────────────────────────────────────
+
+Everything else
+  · nothing moving on this
+
+──────────────────────────────────────────────
+NOT SORTED · these did not match any part of your work
+──────────────────────────────────────────────
+
+Everything else
+  Late:            · [ ] Contract needs your signature by Friday · 2 days late
+  Waiting on you:  · [ ] Invoice for last month
+  Worth a look:    · [ ] Newsletter: ten trends to watch
+
+

@@ -1,0 +1,10 @@
+[project]
+name = "project-van-gogh"
+version = "0.71.0"
+requires-python = ">=3.10"
+# Dependencies are installed from requirements.txt into the plugin-local .venv
+# (plain `python -m venv` + pip — no uv). This file remains the version source
+# of truth (mirrored by .claude-plugin/plugin.json) and the pytest config.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

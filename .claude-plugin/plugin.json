@@ -1,0 +1,10 @@
+{
+  "name": "van-gogh",
+  "description": "Personal chief of staff: daily/weekly briefings, meeting prep, meeting-notes ingestion, relationship radar, and voice tools wired into your Obsidian vault.",
+  "version": "0.71.0",
+  "author": {
+    "name": "Nobel Chang and Wesley Chang"
+  },
+  "repository": "https://github.com/NVentures/project-van-gogh-claude",
+  "license": "UNLICENSED"
+}
