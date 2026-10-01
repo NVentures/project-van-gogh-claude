@@ -1,0 +1,431 @@
+/* Dear Theo. The design system for the Van Gogh Workbench.
+   Source of truth is DESIGN.md at the repo root; this file implements it and
+   must not drift from it. A nocturnal ledger in ink on unbleached paper, lit by
+   one lamp.
+
+   Load-bearing rules, broken by accident most often:
+     - --lamp means staged and awaiting your nod. It appears nowhere else, ever.
+     - No sans-serif anywhere. Charter for prose, Commit Mono for everything else.
+     - Radius is 0, or 3px where a control must feel pressable. Nothing is a pill.
+     - One shadow in the product: the 1px hairline on the nod column.
+*/
+
+:root{
+  --bg:#F5F1E8; --surface:#FBF8F1; --raised:#FFFDF8;
+  --border:#DCD4C2; --border-strong:#C3B9A2;
+  --text:#1C1A16; --text-muted:#6B6355; --text-faint:#948B79;
+  --lamp:#D98C00; --lamp-ink:#8A5600; --lamp-wash:#FBE9B7;
+  --ink-blue:#1B4B6B; --green:#2E6B4F; --vermilion:#A8321A;
+  --rule:rgba(28,26,22,.055);
+
+  --font-prose:"Charter","Bitstream Charter","Iowan Old Style","Palatino Linotype",
+               "Book Antiqua",Palatino,Georgia,serif;
+  --font-mono:"Commit Mono","IBM Plex Mono","SF Mono",Menlo,"Cascadia Mono",
+              Consolas,monospace;
+
+  --gutter-w:84px;
+  --max-w:1180px;
+
+  --s-2xs:2px; --s-xs:4px; --s-sm:8px; --s-md:16px;
+  --s-lg:24px; --s-xl:32px; --s-2xl:48px; --s-3xl:64px;
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#14120F; --surface:#1C1915; --raised:#24201A;
+    --border:#332D25; --border-strong:#4A4237;
+    --text:#EDE6D8; --text-muted:#A39884; --text-faint:#776E5D;
+    --lamp:#F2B705; --lamp-ink:#F2B705; --lamp-wash:#3A2E10;
+    --ink-blue:#6FA8C7; --green:#5FA97C; --vermilion:#E0623F;
+    --rule:rgba(237,230,216,.05);
+  }
+}
+
+:root[data-theme="dark"]{
+  --bg:#14120F; --surface:#1C1915; --raised:#24201A;
+  --border:#332D25; --border-strong:#4A4237;
+  --text:#EDE6D8; --text-muted:#A39884; --text-faint:#776E5D;
+  --lamp:#F2B705; --lamp-ink:#F2B705; --lamp-wash:#3A2E10;
+  --ink-blue:#6FA8C7; --green:#5FA97C; --vermilion:#E0623F;
+  --rule:rgba(237,230,216,.05);
+}
+
+*{box-sizing:border-box}
+
+html,body{margin:0;padding:0}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-prose);
+  font-size:15.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding-left:var(--gutter-w);
+}
+
+/* Every figure is tabular, always. */
+.meta,.micro,.data,.hero,code,pre,input,button,select,textarea,table{
+  font-family:var(--font-mono);
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1;
+}
+
+a{color:var(--ink-blue);text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+
+code{
+  font-size:.86em;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:1px 4px;
+}
+
+pre{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:var(--s-md);
+  overflow-x:auto;
+  font-size:13px;
+  line-height:1.5;
+}
+pre code{background:none;border:0;padding:0}
+
+/* ── Type scale ───────────────────────────────────────────────────────────── */
+
+.micro{
+  font-size:10.5px;line-height:1.2;font-weight:600;
+  text-transform:uppercase;letter-spacing:.13em;
+  color:var(--text-muted);margin:0 0 var(--s-sm);
+}
+.meta{font-size:12px;line-height:1.35;font-weight:450;color:var(--text-muted)}
+.data{font-size:13px;line-height:1.35;font-weight:450}
+.body{font-size:15.5px;line-height:1.62;max-width:68ch}
+.lead{font-size:18px;line-height:1.55}
+.sub{font-family:var(--font-mono);font-size:17px;line-height:1.3;font-weight:600;margin:0 0 var(--s-sm)}
+.title{font-size:22px;line-height:1.25;font-weight:600;font-family:var(--font-prose)}
+.hero{font-size:64px;line-height:.92;font-weight:450;letter-spacing:-.02em;display:block}
+
+/* ── The night gutter ─────────────────────────────────────────────────────── */
+
+.gutter{
+  position:fixed;top:0;left:0;bottom:0;width:var(--gutter-w);
+  border-right:1px solid var(--border);
+  background:var(--surface);
+  overflow:hidden;
+  z-index:2;
+}
+.tick{
+  position:absolute;left:0;right:0;height:1px;background:var(--border);
+  opacity:.7;
+}
+.tick.lit{background:var(--lamp);opacity:1;height:2px}
+.tick-label{
+  position:absolute;left:10px;
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;
+  color:var(--text-faint);transform:translateY(-50%);
+}
+.tick-label.lit{color:var(--lamp-ink)}
+.gutter-now{position:absolute;left:0;right:0;height:1px;background:var(--text);opacity:.55}
+
+/* ── Frame ────────────────────────────────────────────────────────────────── */
+
+.frame{max-width:var(--max-w);margin:0;padding:var(--s-xl) var(--s-xl) var(--s-3xl)}
+
+.masthead{margin-bottom:var(--s-lg)}
+.masthead-line{display:flex;align-items:center;gap:var(--s-md);margin-bottom:var(--s-lg)}
+.wordmark{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--text);
+}
+.rule-fill{flex:1;height:1px;background:var(--border)}
+
+.theme{
+  font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  background:none;color:var(--text-muted);
+  border:1px solid var(--border);border-radius:3px;
+  padding:3px 8px;cursor:pointer;
+}
+.theme:hover{color:var(--text);border-color:var(--border-strong)}
+
+.sentence{
+  font-family:var(--font-prose);font-weight:400;
+  font-size:30px;line-height:1.15;letter-spacing:-.01em;
+  margin:0;max-width:40ch;
+}
+.subsentence{margin:var(--s-sm) 0 0}
+
+/* ── Section bar ──────────────────────────────────────────────────────────── */
+
+.sections{
+  position:relative;display:flex;gap:var(--s-lg);
+  border-bottom:1px solid var(--border);
+  margin-bottom:var(--s-lg);
+}
+.section{
+  appearance:none;background:none;border:0;border-radius:0;
+  padding:0 0 var(--s-sm);cursor:pointer;
+  font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-faint);
+}
+.section:hover{color:var(--text-muted)}
+.section.is-active{color:var(--text)}
+.count{margin-left:6px;color:var(--text-faint);font-weight:450;letter-spacing:.04em}
+.section.is-active .count{color:var(--text-muted)}
+.section-underline{
+  position:absolute;bottom:-1px;left:0;height:2px;width:0;
+  background:var(--text);
+  transition:transform 140ms ease-out,width 140ms ease-out;
+}
+
+/* ── Split ────────────────────────────────────────────────────────────────── */
+
+.split{display:grid;grid-template-columns:62fr 38fr;gap:var(--s-2xl);align-items:start}
+.reading{min-width:0}
+
+.nod{
+  position:sticky;top:var(--s-xl);
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:1px 1px 0 var(--border);      /* the one shadow in the product */
+  padding:var(--s-md);
+}
+.spaced{margin-top:var(--s-lg)}
+
+/* ── Prose and ruled paper ────────────────────────────────────────────────── */
+
+.prose{max-width:68ch}
+.prose.ruled{
+  background-image:repeating-linear-gradient(
+    to bottom,transparent 0 31px,var(--rule) 31px 32px);
+  background-position:0 6px;
+  padding:var(--s-sm) 0 var(--s-lg);
+}
+.prose h1,.prose h2,.prose h3,.prose h4{
+  font-family:var(--font-mono);font-weight:600;
+  margin:var(--s-lg) 0 var(--s-sm);line-height:1.3;
+}
+.prose h1{font-size:19px}
+.prose h2{font-size:17px}
+.prose h3{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)}
+.prose h4{font-size:13px;color:var(--text-muted)}
+.prose p{margin:0 0 var(--s-md)}
+.prose ul,.prose ol{margin:0 0 var(--s-md);padding-left:1.15em}
+.prose li{margin:0 0 var(--s-xs)}
+.prose blockquote{
+  margin:0 0 var(--s-md);padding-left:var(--s-md);
+  border-left:2px solid var(--border-strong);color:var(--text-muted);
+}
+.prose hr{border:0;border-top:1px solid var(--border);margin:var(--s-lg) 0}
+
+/* A folded business. Closed by default: the whole point of the front page is
+   that the ledger stays on the page without being on the screen. */
+.prose details{
+  background:var(--surface);border:1px solid var(--border);border-radius:5px;
+  margin:0 0 var(--s-sm);
+}
+.prose details>summary{
+  font-family:var(--font-mono);font-size:13px;font-weight:600;cursor:pointer;
+  padding:var(--s-sm) var(--s-md);list-style:none;
+}
+.prose details>summary::-webkit-details-marker{display:none}
+.prose details>summary::before{content:"\203A  ";color:var(--text-faint)}
+.prose details[open]>summary::before{content:"\2304  "}
+.prose details .foldbody{padding:2px var(--s-md) var(--s-sm);border-top:1px solid var(--rule)}
+.prose details .foldbody>*:last-child{margin-bottom:0}
+
+.prose ul.tasks{list-style:none;padding-left:0}
+.prose li.task{display:flex;gap:var(--s-sm);align-items:baseline;font-family:var(--font-mono);font-size:13px}
+.prose li.task.done label{color:var(--text-faint);text-decoration:line-through}
+.prose li.task input{margin:0;accent-color:var(--green);width:13px;height:13px;position:relative;top:2px}
+
+.tablewrap{overflow-x:auto;margin:0 0 var(--s-md)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{
+  text-align:left;font-size:10.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.13em;color:var(--text-muted);
+  border-bottom:1px solid var(--border-strong);
+  padding:var(--s-xs) var(--s-sm) var(--s-xs) 0;white-space:nowrap;
+}
+td{
+  padding:var(--s-xs) var(--s-sm) var(--s-xs) 0;
+  border-bottom:1px solid var(--rule);vertical-align:top;
+}
+
+.empty{color:var(--text-faint);font-family:var(--font-mono);font-size:13px}
+
+/* ── The ledger (tickets, progress, inbox) ────────────────────────────────── */
+
+.ledger{border-top:1px solid var(--border)}
+
+.row{
+  display:grid;grid-template-columns:64px 1fr auto;
+  gap:var(--s-md);align-items:baseline;
+  padding:var(--s-sm) 0;
+  border-bottom:1px solid var(--rule);
+}
+.row-time{font-family:var(--font-mono);font-size:12px;color:var(--text-faint)}
+.row-main{min-width:0}
+.row-title{font-family:var(--font-prose);font-size:16px;line-height:1.3;margin:0}
+.row-note{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin:2px 0 0}
+.row-side{display:flex;gap:var(--s-sm);align-items:center;white-space:nowrap}
+/* Actions sit under the row, so the title keeps the full reading width. They
+   stay visible rather than hover-only: a control you cannot see is a control
+   that does not exist on a touch screen. */
+.row-actions{display:flex;gap:var(--s-sm);margin-top:var(--s-sm)}
+.row:not(:hover) .row-actions .ghost{color:var(--text-faint);border-color:var(--rule)}
+
+.row.is-staged{background:linear-gradient(to right,var(--lamp-wash),transparent 62%)}
+
+/* Status words. Never color alone: the word is always there too. */
+.state{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;
+  padding-left:6px;border-left:2px solid var(--border-strong);color:var(--text-muted);
+}
+.state.staged{border-left-color:var(--lamp);color:var(--lamp-ink)}
+.state.running,.state.staging,.state.verifying{border-left-color:var(--ink-blue);color:var(--ink-blue)}
+.state.delivered,.state.rated{border-left-color:var(--green);color:var(--green)}
+.state.failed{border-left-color:var(--vermilion);color:var(--vermilion)}
+.state.proposed{border-left-color:var(--border-strong);color:var(--text-faint)}
+/* Deal-critical is an allowlist mark, not a status, and never chrome yellow:
+   --lamp belongs to staged work alone (DESIGN.md anti-slop rule 7). */
+.state.critical{border-left-color:var(--text);color:var(--text)}
+
+/* Progress: a 1px rule advancing under a running row. */
+.progress-rule{height:1px;background:var(--border);position:relative;margin-top:6px}
+.progress-rule span{
+  position:absolute;left:0;top:0;height:1px;background:var(--ink-blue);
+  animation:advance 2.4s ease-in-out infinite;
+}
+@keyframes advance{0%{width:4%}50%{width:72%}100%{width:96%}}
+
+/* ── The stamp ────────────────────────────────────────────────────────────── */
+
+.stamp{
+  position:relative;overflow:hidden;
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;text-align:center;
+  color:var(--lamp-ink);background:transparent;
+  border:1.5px solid var(--lamp);border-radius:0;
+  padding:6px 12px;cursor:pointer;
+}
+.stamp::before{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:0;
+  background:var(--lamp);transition:height 220ms ease-out;z-index:0;
+}
+.stamp span{position:relative;z-index:1}
+.stamp:hover::before{height:100%}
+.stamp:hover span{color:#1C1A16}
+.stamp.is-pressed::before{height:100%}
+.stamp.is-pressed span{color:#1C1A16}
+
+.ghost{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;
+  background:none;color:var(--text-muted);
+  border:1px solid var(--border);border-radius:3px;
+  padding:5px 9px;cursor:pointer;
+}
+.ghost:hover{color:var(--text);border-color:var(--border-strong)}
+.ghost:disabled{opacity:.45;cursor:default}
+
+.struck{text-decoration:line-through;color:var(--text-faint)}
+
+/* ── Nod column contents ──────────────────────────────────────────────────── */
+
+.nod-item{border-bottom:1px solid var(--rule);padding:var(--s-sm) 0}
+.nod-item:last-child{border-bottom:0}
+.nod-title{font-family:var(--font-prose);font-size:15px;line-height:1.3;margin:0 0 var(--s-xs)}
+.nod-actions{display:flex;gap:var(--s-sm);margin-top:var(--s-sm)}
+
+.deskstats{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-sm) var(--s-md)}
+.stat{border-top:1px solid var(--rule);padding-top:var(--s-xs)}
+.stat b{display:block;font-family:var(--font-mono);font-size:22px;font-weight:450;line-height:1.1}
+.stat span{font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--text-faint)}
+
+.refreshers{display:flex;flex-direction:column;gap:var(--s-xs)}
+.refreshers .ghost{text-align:left}
+
+/* ── Briefing picker ──────────────────────────────────────────────────────── */
+
+.briefing-picker{display:flex;gap:var(--s-md);margin-bottom:var(--s-md)}
+.pick{
+  appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+  border-radius:0;padding:0 0 var(--s-xs);cursor:pointer;
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--text-faint);
+}
+.pick.is-active{color:var(--text);border-bottom-color:var(--text)}
+.pick .when{margin-left:6px;font-weight:450;letter-spacing:.04em}
+.pick.is-stale .when{color:var(--vermilion)}
+
+/* ── Gate ─────────────────────────────────────────────────────────────────── */
+
+.panel{
+  background:var(--surface);border:1px solid var(--border);
+  padding:var(--s-lg);max-width:68ch;
+}
+
+/* ── Brain ────────────────────────────────────────────────────────────────── */
+
+.brainwrap{position:relative;border:1px solid var(--border);background:var(--surface)}
+#brain-canvas{display:block;width:100%;height:520px}
+.brain-panel{
+  position:absolute;top:var(--s-md);right:var(--s-md);width:246px;
+  background:var(--raised);border:1px solid var(--border);
+  padding:var(--s-sm) var(--s-md);max-height:440px;overflow-y:auto;
+}
+.brain-panel h3{font-family:var(--font-mono);font-size:13px;margin:0 0 var(--s-sm)}
+.brain-panel ul{list-style:none;margin:0 0 var(--s-sm);padding:0}
+.brain-panel li{font-family:var(--font-mono);font-size:12px;line-height:1.5}
+.brain-panel a{cursor:pointer}
+
+.ruled-input{
+  width:100%;max-width:68ch;margin-top:var(--s-md);
+  background:none;color:var(--text);
+  border:0;border-bottom:1px solid var(--border-strong);border-radius:0;
+  padding:var(--s-sm) 0;font-size:14px;
+}
+.ruled-input:focus{outline:none;border-bottom-color:var(--text)}
+.ruled-input::placeholder{color:var(--text-faint)}
+
+/* ── Inbox ────────────────────────────────────────────────────────────────── */
+
+.logo{
+  width:16px;height:16px;object-fit:contain;
+  filter:grayscale(1);opacity:.8;vertical-align:-3px;margin-right:var(--s-sm);
+}
+.row:hover .logo{filter:none;opacity:1}
+.avatar{
+  display:inline-block;width:16px;height:16px;line-height:16px;
+  text-align:center;font-family:var(--font-mono);font-size:9px;font-weight:600;
+  border:1px solid var(--border-strong);color:var(--text-muted);
+  vertical-align:-3px;margin-right:var(--s-sm);
+}
+
+.footer{margin-top:var(--s-2xl);padding-top:var(--s-md);border-top:1px solid var(--border)}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width:940px){
+  body{padding-left:0;padding-top:38px}
+  .gutter{
+    top:0;left:0;right:0;bottom:auto;width:auto;height:38px;
+    border-right:0;border-bottom:1px solid var(--border);
+  }
+  .frame{padding:var(--s-md)}
+  .split{grid-template-columns:1fr;gap:var(--s-lg)}
+  .nod{position:static}
+  .sentence{font-size:24px}
+}
+
+/* ── Reduced motion: keep every end state, drop the movement ──────────────── */
+
+@media (prefers-reduced-motion:reduce){
+  .section-underline{transition:none}
+  .stamp::before{transition:none}
+  .progress-rule span{animation:none;width:60%}
+}

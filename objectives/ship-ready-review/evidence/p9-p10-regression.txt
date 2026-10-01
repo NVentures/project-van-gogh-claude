@@ -1,0 +1,17 @@
+[pre-change config] identical: True
+   urgent    before=['Term sheet redline', 'Widget deal question']
+   urgent    after =['Term sheet redline', 'Widget deal question']
+   monitor   before=['Following up', 'Invoice 4471', 'RTO Feedback Request']
+   monitor   after =['Following up', 'Invoice 4471', 'RTO Feedback Request']
+   filtered  before=['Your account statement']
+   filtered  after =['Your account statement']
+
+[no buckets configured] identical: True
+   urgent    before=['Term sheet redline', 'Widget deal question']
+   urgent    after =['Term sheet redline', 'Widget deal question']
+   monitor   before=['Following up', 'Invoice 4471', 'RTO Feedback Request']
+   monitor   after =['Following up', 'Invoice 4471', 'RTO Feedback Request']
+   filtered  before=['Your account statement']
+   filtered  after =['Your account statement']
+
+RESULT: PASS

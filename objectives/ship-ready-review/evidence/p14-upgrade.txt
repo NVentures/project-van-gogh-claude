@@ -1,0 +1,31 @@
+An existing install, upgrading:
+  vault:  /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-upgrade-vault-21qcbdn3/Old Vault
+  config: 4 top-level keys, no priorities, no judgment, no memory_sync
+
+1. The managed CLAUDE.md block refreshes
+  block rewritten: True
+  kept user's own section: True
+  kept user's own line: True
+  kept user's own table row: True
+  added priorities rule: True
+  added drafting rule: True
+  added memory surfaces rule: True
+  stale managed content gone: True
+
+2. Running it twice changes nothing more (idempotent)
+  identical after second run: True
+
+3. No config value was lost
+  config untouched by the sync: True
+
+4. The old config still resolves under the new code
+  business_priorities(acme): []
+  judgment_enabled: True
+  memory_sync_enabled: False
+  resolved_meta keys: 28
+
+5. Dependency re-sync is hash-driven
+  requirements.txt sha256: 5f7839c9a1399aed
+  sync_runtime_deps no-ops outside the managed venv: True
+
+RESULT: PASS

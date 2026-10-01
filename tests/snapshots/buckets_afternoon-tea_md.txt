@@ -1,0 +1,46 @@
+──────────────────────────────────────────────
+HARBOR SOLAR
+──────────────────────────────────────────────
+
+Close Meridian
+**Done today**
+- [ ] Meridian redline v4 · from Dana Ruiz · 2 days late
+
+Land the QX diligence
+**Waiting on you**
+- [ ] QX diligence list · from Ray Okafor · 6 days ago
+
+Everything else here
+**Still open**
+- [ ] Harbor Q3 invoice · from Sam Ito · 21 days ago
+
+──────────────────────────────────────────────
+NORTHWIND DC
+──────────────────────────────────────────────
+
+Sign Kestrel
+**Waiting on you**
+- [ ] Kestrel term sheet · from Ana Beltre · 2 days ago · due 2026-09-05
+
+Everything else here
+**Waiting on you**
+- [ ] Two engineering finalists for Northwind · from Priya N. · 3 days ago
+
+──────────────────────────────────────────────
+CEDAR
+──────────────────────────────────────────────
+
+**Waiting on you**
+- [ ] Cedar pricing page copy · from Marco Lind · 1 day ago · due 2026-09-04
+
+──────────────────────────────────────────────
+PERSONAL
+──────────────────────────────────────────────
+
+**Still open**
+- [ ] Dentist follow up · from Front Desk · 33 days ago
+- [ ] Austin summit slot · from Brandon B. · 12 days ago
+
+
+I am guessing at what matters in Cedar, Personal. Tell me once and I will file
+it right from now on: run /van-gogh:update-settings

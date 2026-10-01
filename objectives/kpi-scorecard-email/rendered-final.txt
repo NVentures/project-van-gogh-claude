@@ -1,0 +1,58 @@
+Van Gogh
+Your fortnight, Aug 26 to Sep 9
+3 of 6 measures on target.
+Action items with an owner and Calls with a prep are still short.
+Threads waiting on you
+12
+down from 21
+14 you closed, 5 arrived, leaving 12 open
+latest week
+week before
+Met.
+Target: down 40 percent against the week before
+Late items
+2
+down from 5
+5 you cleared, 2 newly late
+latest week
+week before
+Met.
+Target: down by half, and under three
+Time to close
+168h
+median
+no comparison yet
+7 of 7 closed
+Target: half of the previous fortnight, once there is one to compare
+Counted as: counted from first appearing on your front page to being ticked off
+Action items with an owner
+49%
+up from 44%
+171 of 351 action items say who owns them.
+across 81 meeting notes, internal ones included
+latest week
+week before
+Not yet.
+Target: nine in ten name an owner
+Calls with a prep
+78%
+no comparison yet
+2 went in without one
+7 of 9 outside calls
+Not yet.
+Target: nine in ten
+Commitments closed
+14
+up from 0
+latest week
+week before
+Met.
+Target: more than last week
+Counted over Aug 26 to Sep 9, from your own briefings.
+One thing you have not tried yet
+Relationship Radar
+Finds the people you have not spoken to in a month and drafts a check-in to each one in your own voice.
+Takes about a minute, whenever you have one.
+/van-gogh:relationship-radar
+No message text, no names and no addresses leave your machine, only these counts.
+To stop these emails, run /van-gogh:update-settings and turn the scorecard off.

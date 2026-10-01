@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Van Gogh Workbench</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- The night gutter: a 24-hour ruler, not a nav rail. Hours where overnight
+     work landed carry a lamp tick. -->
+<aside class="gutter" id="gutter" aria-label="Overnight ruler"></aside>
+
+<div class="frame">
+
+  <header class="masthead">
+    <div class="masthead-line">
+      <span class="wordmark">VAN&#160;GOGH</span>
+      <span class="rule-fill"></span>
+      <span class="meta" id="stamp-date"></span>
+      <button class="theme" id="theme" type="button" title="Day or night">DAY</button>
+    </div>
+    <h1 class="sentence" id="sentence">Reading the desk.</h1>
+    <p class="subsentence meta" id="subsentence"></p>
+  </header>
+
+  <!-- Five words on one hairline. No pills, no boxes, no icons. -->
+  <nav class="sections" id="sections" aria-label="Sections">
+    <button class="section is-active" data-section="briefings" type="button">
+      BRIEFINGS<span class="count" data-count="briefings"></span></button>
+    <button class="section" data-section="tickets" type="button">
+      TICKETS<span class="count" data-count="tickets"></span></button>
+    <button class="section" data-section="progress" type="button">
+      PROGRESS<span class="count" data-count="progress"></span></button>
+    <button class="section" data-section="brain" type="button">
+      BRAIN<span class="count" data-count="brain"></span></button>
+    <button class="section" data-section="inbox" type="button">
+      INBOX<span class="count" data-count="inbox"></span></button>
+    <span class="section-underline" id="section-underline"></span>
+  </nav>
+
+  <!-- OAuth notice. Refresh and scheduling need tokens and say so; whatever is
+       already on disk is still shown, because a vault full of real notes is not
+       a broken page. -->
+  <section class="panel gate" id="gate" hidden>
+    <h2 class="sub">Reading only. No account is connected.</h2>
+    <p class="body">
+      No OAuth token was found on this machine, so nothing here can refresh
+      itself and nothing can run on a schedule. What is below was read off disk:
+      whatever your last briefing wrote, and your vault.
+    </p>
+    <p class="body">
+      Run <code>/van-gogh:install-van-gogh</code> in Claude Code to connect an
+      account, then reopen this page.
+    </p>
+  </section>
+
+  <main class="split" id="main" hidden>
+
+    <div class="reading">
+
+      <section class="view" data-view="briefings">
+        <div class="briefing-picker" id="briefing-picker"></div>
+        <article class="prose ruled" id="briefing-body">
+          <p class="empty">Nothing was written here yet.</p>
+        </article>
+      </section>
+
+      <section class="view" data-view="tickets" hidden>
+        <div class="ledger" id="ledger"></div>
+      </section>
+
+      <section class="view" data-view="progress" hidden>
+        <div class="ledger" id="progress-ledger"></div>
+      </section>
+
+      <section class="view" data-view="brain" hidden>
+        <div class="brainwrap">
+          <canvas id="brain-canvas"></canvas>
+          <div class="brain-panel" id="brain-panel" hidden></div>
+        </div>
+        <input class="ruled-input" id="brain-query" type="search"
+               placeholder="Search the vault" autocomplete="off">
+        <p class="meta" id="brain-meta"></p>
+      </section>
+
+      <section class="view" data-view="inbox" hidden>
+        <div class="ledger" id="crm"></div>
+      </section>
+
+    </div>
+
+    <!-- The nod column. The only place chrome yellow lives. -->
+    <aside class="nod" id="nod">
+      <h2 class="micro">AWAITING YOUR NOD</h2>
+      <div id="nod-body">
+        <p class="empty">Nothing was left for you.</p>
+      </div>
+
+      <h2 class="micro spaced">THE DESK</h2>
+      <div class="deskstats" id="deskstats"></div>
+
+      <h2 class="micro spaced">REFRESH</h2>
+      <div class="refreshers" id="refreshers"></div>
+    </aside>
+
+  </main>
+
+  <footer class="footer meta" id="footer"></footer>
+</div>
+
+<script src="/static/graph.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

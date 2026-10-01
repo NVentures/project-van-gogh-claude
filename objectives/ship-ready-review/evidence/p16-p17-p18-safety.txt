@@ -1,0 +1,16 @@
+P16  memory mirror: containment and content
+     discovered exactly: ['memory'] from ['-mine']
+     target tree hash stable across two runs: True
+     decoy project untouched: True
+     files written outside the target: 0
+     mirrored files carrying secret-shaped strings: none
+
+P17  no personal identity in the shipped tree
+     name-shaped strings whose surname is not repo vocabulary: 0
+     hits: 0
+
+P18  no em-dash or en-dash
+     added diff lines carrying a dash: 0
+     rendered briefings (3 briefings x 2 modes + degraded notice): clean
+
+RESULT: PASS
