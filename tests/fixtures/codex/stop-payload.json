@@ -1,0 +1,11 @@
+{
+  "session_id": "0199aaaa-bbbb-7ccc-8ddd-eeeeffff0001",
+  "turn_id": "0199aaaa-bbbb-7ccc-8ddd-eeeeffff0002",
+  "transcript_path": "/home/someone/.codex/sessions/2026/10/14/rollout-example.jsonl",
+  "cwd": "/home/someone/vault",
+  "hook_event_name": "Stop",
+  "model": "gpt-6-luna",
+  "permission_mode": "bypassPermissions",
+  "stop_hook_active": false,
+  "last_assistant_message": "Handing to: nobody\n\nNothing here needs a skill."
+}

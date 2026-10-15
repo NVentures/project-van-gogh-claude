@@ -1,0 +1,37 @@
+{
+  "description": "Van Gogh: the one line about an unfinished install and the question about a newer Van Gogh at session start, and the hand-off line Vincent owes at the end of a turn.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/setup_notice.sh\"",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/update_notice.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/handoff_line.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

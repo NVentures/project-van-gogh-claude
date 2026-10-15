@@ -1,0 +1,484 @@
+# Document 1: README (prerequisites, installation, where to open sessions)
+## Prerequisites
+
+Runs on macOS and Windows 10/11 (the macOS lines below also work on Linux). Every skill and script is cross-platform: paths, encodings, time formatting, and shell steps all work the same on each OS (commands that differ are shown in both bash/zsh and PowerShell forms).
+
+| Tool | Purpose | Install |
+|---|---|---|
+| [Claude Code](https://claude.ai/code) or [Codex](https://chatgpt.com/codex) | Runs the skills (one of the two per computer) | claude.ai/code, or the Codex app (on a Mac it is part of the ChatGPT app) plus the `codex` command, which OpenAI's installer line below puts on your PATH |
+| Python 3.10+ | Runs the briefing scripts | The install line uses the Python already on the machine, or fetches a private copy into `~/.config/van-gogh/` with no administrator password |
+| Git | Plugin install & updates (the marketplace clones this repo) | [git-scm.com](https://git-scm.com) — usually already present |
+| [Granola](https://granola.ai) *or* [Grain](https://grain.com) | Meeting transcription (optional) — one active at a time | granola.ai / grain.com |
+| [Obsidian](https://obsidian.md) | Optional: a nicer way to view the vault, which is a plain folder of markdown files | obsidian.md |
+
+Gmail, Calendar, and Outlook access runs through your own sign-in (Tier 1, the path the install sets up on either client), or under Claude only through Claude's built-in connectors (Tier 2); no mail or calendar tool has to be installed either way. `/van-gogh:install-van-gogh` walks you through connecting each account, and lets you add more later with `/van-gogh:add-account`.
+
+---
+
+## Installation
+
+Project Van Gogh installs as a **Claude Code plugin** or as a **Codex
+plugin**, from the same repository: it is its own marketplace for both and
+is public, so there is no GitHub sign-in step. Pick the client you use; one
+computer runs one of the two.
+
+Before anything else, run the readiness check. It needs nothing installed
+and prints READY, or names what is missing in plain words:
+
+macOS (Terminal), Claude Code:
+<!-- paste: check-claude-mac -->
+```
+curl -fsSL https://raw.githubusercontent.com/NVentures/project-van-gogh-claude/main/check.sh | sh
+```
+
+Windows (PowerShell), Claude Code:
+<!-- paste: check-claude-windows -->
+```
+irm https://raw.githubusercontent.com/NVentures/project-van-gogh-claude/main/check.ps1 | iex
+```
+
+macOS (Terminal), Codex:
+<!-- paste: check-codex-mac -->
+```
+curl -fsSL https://raw.githubusercontent.com/NVentures/project-van-gogh-claude/main/check.sh | sh -s -- --host codex
+```
+
+Windows (PowerShell), Codex (`irm ... | iex` passes no options to the
+script, so the client is named in the environment):
+<!-- paste: check-codex-windows -->
+```
+$env:VAN_GOGH_HOST = "codex"; irm https://raw.githubusercontent.com/NVentures/project-van-gogh-claude/main/check.ps1 | iex
+```
+
+Then paste the install line for your client into Terminal (not into Claude
+or Codex); under Codex, install the `codex` command first, as its lines say.
+The install line puts the plugin in place, prepares Python without an
+administrator
+password, reads the key file the Van Gogh team sent you (saved in
+Downloads), and opens your client with setup already running:
+
+macOS (Terminal), Claude Code:
+<!-- paste: install-claude-mac -->
+```
+claude plugin marketplace add https://github.com/NVentures/project-van-gogh-claude.git; claude plugin marketplace update van-gogh; sh ~/.claude/plugins/marketplaces/van-gogh/setup.sh
+```
+
+Windows (PowerShell), Claude Code:
+<!-- paste: install-claude-windows -->
+```
+claude plugin marketplace add https://github.com/NVentures/project-van-gogh-claude.git; claude plugin marketplace update van-gogh; powershell -ExecutionPolicy Bypass -File "$HOME\.claude\plugins\marketplaces\van-gogh\setup.ps1"
+```
+
+macOS (Terminal), Codex (install the command first with
+`curl -fsSL https://chatgpt.com/codex/install.sh | sh`, then open a new
+window; the ChatGPT app carries a copy of Codex, but not as a command you
+can type):
+<!-- paste: install-codex-mac -->
+```
+codex plugin marketplace add NVentures/project-van-gogh-claude && codex plugin add van-gogh@van-gogh && cd ~/.codex/plugins/cache/van-gogh/van-gogh && sh "$(ls -d */ | sort -V | tail -n 1)setup.sh" --host codex
+```
+
+Windows (PowerShell), Codex (install the command first with
+`irm https://chatgpt.com/codex/install.ps1 | iex`, then open a new window):
+<!-- paste: install-codex-windows -->
+```
+codex plugin marketplace add NVentures/project-van-gogh-claude; codex plugin add van-gogh@van-gogh; powershell -ExecutionPolicy Bypass -File ((Get-ChildItem "$HOME\.codex\plugins\cache\van-gogh\van-gogh" -Directory | Sort-Object { [version]$_.Name } | Select-Object -Last 1).FullName + "\setup.ps1") -Host codex
+```
+
+Under Codex the first session asks once whether to trust the plugin's hooks;
+say yes (they do one thing: print the line that reminds you of an unfinished
+install). Skills
+are named `$van-gogh:<name>` there instead of `/van-gogh:<name>`, and
+everything below reads the same way with that spelling. Four things need
+Claude and say so in one line when run under Codex:
+
+- the QuickBooks read behind `$van-gogh:finance-brief`;
+- the chat connector fallback for mail, which `$van-gogh:meeting-prep` and
+  the briefings reach only when no mail account is signed in;
+- the CRM lookups that `$van-gogh:add-connector` sets up;
+- each briefing's private web page on claude.ai, which is not published
+  from Codex.
+
+Everything else runs under either client; a skill that looks something up on
+the web uses Codex's own web search when that is switched on, and otherwise
+says the lookup was skipped.
+
+The session it opens (Claude or Codex) is Vincent, your chief of staff, and he runs setup. He
+asks five questions when nothing goes wrong (your notetaker and its key, one confirmation of your details,
+the schedule, your priorities, and which of the deals it found are real),
+signs you in to each account in your browser, and keeps a checklist of the
+install's steps on disk. The schedule question shows every job that can run by
+itself, with its time on your computer and whether it starts on or off, and
+you keep it, change it in your own words, or schedule nothing. If the window
+closes or the session is interrupted, ask Vincent to finish setup
+(`/van-gogh:vincent`; he follows the same steps himself, from the same rules
+page), or run `/van-gogh:install-van-gogh`, and it resumes at
+the first open step; while any step is open, Van Gogh reminds you once when you
+open Claude or Codex, once at the top of any other skill's reply, once in
+any briefing, and by email on day one, three and seven.
+It ends with your first briefings on screen. The venv it creates lives at
+`~/.config/van-gogh/venv`, outside the plugin cache, so a plugin update never
+deletes it; its packages come from `requirements.txt` and refresh themselves
+when an update changes that file. No key file from
+the team? `/van-gogh:install-van-gogh` still works; it points you at the
+instructions for creating your own Google and Microsoft app credentials.
+
+All Python invocations use that venv's interpreter (`~/.config/van-gogh/venv/bin/python`, or `venv\Scripts\python.exe` on Windows) so the managed environment is always active.
+
+---
+
+## Vault structure
+
+`/van-gogh:install-van-gogh` scaffolds this directory structure inside your Obsidian vault:
+
+```
+van-gogh/            ← Project Van Gogh state (config + briefings + logs)
+  config.json        ← your accounts, vault path, businesses, filters
+  week.md            ← rendered weekly briefing
+  morning-coffee.md  ← rendered daily briefing
+  afternoon-tea.md   ← rendered end-of-day retro
+  logs/              ← script sidecars + scheduler logs
+  projects/          ← workspace memory (Project Van Gogh/memory.md)
+wiki/
+  hotcache.md        ← working memory: active deals, action items, key numbers
+  memory/            ← mirrored chat memory (opt-in, off by default)
+  index.md           ← content catalog
+  log.md             ← operation log
+  entities/          ← one page per person or org
+  projects/          ← one page per venture or initiative
+  sources/           ← meeting notes, retros, filed documents
+  weekly/            ← weekly briefing files
+  analyses/          ← research and synthesis outputs
+raw/
+  assets/            ← source files, attachments
+CLAUDE.md            ← vault schema and business context (fill this in after install; under Codex the file is AGENTS.md)
+```
+
+After install, open `CLAUDE.md` in your vault (`AGENTS.md` under Codex; setup creates the one your client reads) and fill in two tables: your ventures (Business Tags) and any known transcription corrections (Jargon). That's the only manual setup required when the Van Gogh team sent you a key file.
+
+### Where to open sessions
+
+For chief-of-staff work, open Claude Code **in your vault folder** — the vault
+`CLAUDE.md` then loads automatically, giving every prompt the Van Gogh context:
+what the stack is, where state lives, which skill handles which intent, and your
+workspace memory (including the pending-follow-ups ledger).
+
+```bash
+cd "/path/to/your vault" && claude        # macOS / Linux
+```
+```powershell
+cd "C:\path\to\your vault"; claude        # Windows
+```
+
+To talk to Vincent for a whole session, start Claude as him from the same
+folder. He reads what ran, what did not and what you asked him to remember
+before his first reply, and you can ask for any work in your own words:
+
+```bash
+cd "/path/to/your vault" && claude --agent vincent        # macOS / Linux
+```
+```powershell
+cd "C:\path\to\your vault"; claude --agent vincent        # Windows
+```
+
+Under Codex, open the Codex app (inside the ChatGPT app on a Mac) or `codex` in the vault folder (it reads
+the vault `AGENTS.md` the same way Claude reads `CLAUDE.md`) and mention
+`$van-gogh:vincent`.
+
+The chat on each briefing page in the Workbench is Vincent as well. There he
+can read and answer, and he runs a briefing, a meeting prep or a radar when
+you ask for one. Anything else he tells you to run from a terminal.
+
+The `/van-gogh:*` skills also work from any other directory — you just won't
+have the ambient vault context there. The top of the vault `CLAUDE.md` (or
+`AGENTS.md` under Codex) is a
+managed block (between `van-gogh:context` markers) that self-refreshes on
+plugin updates; everything you write below the end marker is yours and is never
+touched.
+
+---
+
+
+
+# Document 2: skills/_shared/python-runtime.md
+# Python runtime (shared procedure)
+
+Every Van Gogh script runs through the shared per-user venv at
+`~/.config/van-gogh/venv`. It lives **outside** the plugin cache
+(`${CLAUDE_PLUGIN_ROOT}`) so a plugin update or reinstall — which re-clones the
+cache directory — never deletes it. The *code* still comes from the plugin
+cache: only the interpreter is stable.
+
+Interpreter paths used by every skill command:
+
+- macOS / Linux (bash/zsh): `"$HOME/.config/van-gogh/venv/bin/python"`
+- Windows (PowerShell): `"$HOME\.config\van-gogh\venv\Scripts\python.exe"`
+
+## Ensure the venv exists (start of skill)
+
+Run this guard once, before the skill's first script invocation. (The install
+skill is the one exception to this guard and to the setup line below: the
+README's install line has already built the venv and ticked the setup record,
+so that skill runs `setup_flow.py` and the wait it asks for, and nothing from
+this page.) It is a no-op
+when the venv is healthy; if the venv is missing (fresh machine, or an install
+that predates the stable-venv layout), it creates it from the plugin's
+`requirements.txt`.
+
+macOS / Linux (bash/zsh):
+
+```bash
+[ -x "$HOME/.config/van-gogh/venv/bin/python" ] || { python3 -m venv "$HOME/.config/van-gogh/venv" && "$HOME/.config/van-gogh/venv/bin/python" -m pip install -q -r "${CLAUDE_PLUGIN_ROOT}/requirements.txt"; }
+```
+
+Windows (PowerShell):
+
+```powershell
+if (-not (Test-Path "$HOME\.config\van-gogh\venv\Scripts\python.exe")) { python -m venv "$HOME\.config\van-gogh\venv"; & "$HOME\.config\van-gogh\venv\Scripts\python.exe" -m pip install -q -r "$env:CLAUDE_PLUGIN_ROOT\requirements.txt" }
+```
+
+If the guard itself fails (no `python3`/`python` on PATH), stop and tell the
+user to run the README's install line in Terminal again (it brings its own
+private copy of Python when none is installed); Python setup is that
+line's job.
+
+## The setup line (start of skill, right after the guard)
+
+Every skill runs this once, after the guard and before anything else it
+prints. It answers one question: is this machine's Van Gogh install finished?
+While `~/.config/van-gogh/setup/checklist.json` exists it is not, and the
+command prints one line (how many steps are left, the one next action, and
+the resume command); when the install is finished it prints nothing.
+
+macOS / Linux (bash/zsh):
+
+```bash
+"$HOME/.config/van-gogh/venv/bin/python" "${CLAUDE_PLUGIN_ROOT}/app/setup_state.py" line
+```
+
+Windows (PowerShell):
+
+```powershell
+& "$HOME\.config\van-gogh\venv\Scripts\python.exe" "$env:CLAUDE_PLUGIN_ROOT\app\setup_state.py" line
+```
+
+Non-empty output: print it verbatim as the first line of your reply, on its
+own, then carry on with the skill. Do not reword it, add to it, or turn it
+into a section; the words are chosen so every surface says the same thing
+(the session-start hook and the briefing footer print this same line, see
+`front-page.md` step 14). Empty output, or a command that fails: say nothing
+about setup and carry on. This is informational only: the skill the user asked
+for still runs, and nothing here asks a question or sends anything.
+
+An *existing* venv keeps itself current: after a plugin update changes
+`requirements.txt`, the next script run pip-installs the difference
+automatically (`user_state.sync_runtime_deps()`, called at `config_loader`
+import). Skills never need a dependency re-sync step.
+
+Note for maintainers: a development checkout of this repo still uses its own
+repo-root `.venv` for pytest and direct script runs (see CLAUDE.md); the
+stable venv is what installed *skills* invoke.
+
+## Two clients: Claude Code and Codex
+
+Van Gogh runs in Claude Code and in OpenAI Codex (the Codex app, part of
+the ChatGPT app on a Mac, and the `codex` command). Every skill is written once, for Claude's tools, and the
+same text runs under Codex with the readings below. The commands, the venv
+and `${CLAUDE_PLUGIN_ROOT}` are the same (Codex sets that variable from its
+own config, which the install wrote and every plugin update rewrites). You are in
+Codex when the session names skills as `$van-gogh:<name>` or when
+`CODEX_THREAD_ID` is in a command's environment.
+
+| Written for Claude | Under Codex |
+|---|---|
+| `/van-gogh:<name>` shown to the person | spell it `$van-gogh:<name>`; that is how a Codex session names a skill |
+| AskUserQuestion tool | ask the same question as plain text, the options numbered, and wait for the reply |
+| Skill tool, SlashCommand tool | mention `$van-gogh:<name>` in your own turn and follow that skill's SKILL.md |
+| Agent tool, Task tool | do the work yourself, here, one entry after another: when the prompt names a skill (`/van-gogh:week`), follow that skill; when it names one of the plugin's agents, read `agents/<name>.md` under the plugin root and follow it |
+| TodoWrite tool | keep the list in your reply |
+| Artifact tool (a briefing's web page) | skip the publish step and say in one line that the page needs Claude and was not updated this run; everything else in the skill proceeds |
+| The finance brief's QuickBooks read, the chat connector fallback for mail, a CRM lookup (claude.ai connectors) | the script answers with one line saying it needs Claude; print that line, skip that step, and carry on with the rest of the skill |
+| Read, Write, Edit, Grep, Glob, Bash tools | the same actions with what Codex gives you (shell commands and file edits; when the content is a key or a token, write it with a file edit, never on a command line) |
+| WebSearch, WebFetch tools | Codex's web search when it is on; otherwise say the lookup was skipped |
+| "In Claude, type ..." or "Claude" in a line you write yourself | say Codex (a line a script prints is shown as it is; the scripts already know which client they run under) |
+
+
+# Document 3: skills/install-van-gogh/SKILL.md
+---
+name: install-van-gogh
+description: >-
+  First-time setup for Project Van Gogh, run by the orchestrator in
+  app/setup_flow.py: accounts signed in, settings confirmed, background jobs
+  scheduled, deals and people seeded, meetings filed, first briefings shown,
+  with five questions and nothing to install by hand. Use when the user says
+  "install van gogh", "set up van gogh", "finish setup", or runs first-time
+  setup; the same command resumes an install that stopped early.
+disable-model-invocation: true
+allowed-tools:
+  - Write
+  - Bash("$HOME/.config/van-gogh/venv/bin/python" *)
+  - Bash(& "$HOME\.config\van-gogh\venv\Scripts\python.exe" *)
+  - Agent
+---
+
+# /van-gogh:install-van-gogh
+
+The install is a loop. One script decides everything and keeps the checklist
+at `~/.config/van-gogh/setup/checklist.json`; you call it, read one JSON
+object, and do what `kind` says. Never run a command that this page, or a page it sends you to, does not show; never guess a
+step, never paraphrase a line the script hands you. Running this again after
+a crash, a closed laptop or a new session resumes at the first open box and
+never asks again for an answer it already has (a question comes back only when the answer did not work or the person changed something).
+
+## The loop
+
+Call `next`:
+
+macOS / Linux (bash/zsh):
+```bash
+"$HOME/.config/van-gogh/venv/bin/python" "${CLAUDE_PLUGIN_ROOT}/app/setup_flow.py" next
+```
+
+Windows (PowerShell):
+```powershell
+& "$HOME\.config\van-gogh\venv\Scripts\python.exe" "$env:CLAUDE_PLUGIN_ROOT\app\setup_flow.py" next
+```
+
+Read the JSON and branch on `kind`:
+
+- `prompt`: when the prompt has a `show` field, print it first, exactly as
+  given and inside a code block so its columns line up. Then ask with the
+  AskUserQuestion tool, using `prompt.header` as the
+  header, `prompt.question` as the question, every entry of `prompt.options`
+  as an option (label and description), and `prompt.multi` as `multiSelect`.
+  Then send the answer back in a file, never on the command line (a
+  notetaker key would otherwise be visible to every process on the machine).
+  Write one JSON object, `{"id": "<prompt.id>", "value": <the answer>}`, to
+  the path in `prompt.answer_file` with the Write tool, then call `next` with
+  that path. The script reads the file and deletes it.
+
+  macOS / Linux (bash/zsh):
+  ```bash
+  "$HOME/.config/van-gogh/venv/bin/python" "${CLAUDE_PLUGIN_ROOT}/app/setup_flow.py" next --answer-file "<prompt.answer_file>"
+  ```
+
+  Windows (PowerShell):
+  ```powershell
+  & "$HOME\.config\van-gogh\venv\Scripts\python.exe" "$env:CLAUDE_PLUGIN_ROOT\app\setup_flow.py" next --answer-file "<prompt.answer_file>"
+  ```
+
+  The value per prompt id: `notetaker` is `{"provider": "granola", "key": "<the pasted key>"}`
+  (or `"grain"`); when they tap Granola or Grain, ask for the key as a plain
+  reply first, and never echo it. The question's third option is
+  "None, or another notetaker"; when they tap it, the value is that label.
+  `confirm` is `"Yes, continue"`, or an object of the fields they want changed
+  (`full_name`, `first_name`, `company`, `timezone` exactly as they said it,
+  a city is fine, and `vault_path`); the script shows the screen again with
+  the change.
+  `schedule` is the tapped label for `Keep these` and `Schedule nothing`.
+  When they tap `Change something`, ask "What should change?" as a plain
+  message, wait for their reply, and send what they said as
+  `{"changes": [...]}`, one entry for each job they named:
+  `{"job": "<the job's name as the table prints it>", "on": true or false, "time": "HH:MM on a 24 hour clock", "days": ["monday", ...], "mode": "each" or "daily"}`,
+  leaving out every field they did not mention. `mode` is for meeting prep
+  only: `daily` is one email each morning and `each` is one before every
+  call. Never decide for them whether a change is allowed and never correct
+  it: send it as they said it. The script checks every change, shows the
+  table again with the changes marked, and says in the question what it
+  could not place. They can change more or keep it. `priorities` is the list of ticked labels
+  plus anything they typed, in their words. `deals` is the list of ticked
+  labels, or `["None of these"]`. `account_mismatch` (asked only when the
+  signed-in address differs from the key file) is the tapped label.
+  `signin_link` (asked only when no browser could open on this computer):
+  show the question exactly as given, it carries the link or the code. For
+  Google the value is `{"label": "I signed in", "address": "<the pasted address>"}`,
+  the address being their next plain reply; for Microsoft it is the tapped
+  label.
+  Call `next` again after every answer; the script may ask the same question
+  again, and then the reason leads `prompt.question` (a key that did not work,
+  a folder that could not be created), so ask it exactly as given.
+- `wait`: say `say` once, in one short line, then sleep `poll_seconds`
+  (put that number in place of the 15 below) and call `next` again. Say
+  nothing more while the same wait repeats.
+
+  macOS / Linux (bash/zsh):
+  ```bash
+  "$HOME/.config/van-gogh/venv/bin/python" -c "import time; time.sleep(15)"
+  ```
+
+  Windows (PowerShell):
+  ```powershell
+  & "$HOME\.config\van-gogh\venv\Scripts\python.exe" -c "import time; time.sleep(15)"
+  ```
+- `dispatch`: launch both entries of `agents` in ONE message with the Agent
+  tool, each agent's prompt being exactly its `prompt` field (for example
+  `/van-gogh:week`), say `say` once, wait for all of them to finish, then
+  call `next`. Under Claude, launch both at once rather than one after the
+  other, so the first briefings arrive together. Under Codex `inline` is
+  true (no Agent tool): say `say`, then run the entries yourself, one after
+  the other, each by following its skill (they arrive a few minutes apart
+  there), and call `next` when both are done.
+- `error`: print `line` verbatim and stop, with the one exception below. It already names the resume
+  command. When `box` is `credentials` and the line says the key file is not
+  in Downloads, the client has no key file from the Van Gogh team: read
+  [references/own-credentials.md](references/own-credentials.md) and follow it,
+  then call `next` again. For any other sign-in failure the one line is the
+  whole answer; [references/oauth-failure-handling.md](references/oauth-failure-handling.md)
+  explains the classes if the client asks why.
+- `done`: print `closing_text` verbatim. Vincent then adds the one line his
+  own rules give him; anyone else stops there. When `already_installed` is
+  true nothing ran, and the same text says so.
+
+Show the client the `elapsed` field only if they ask how long it has been.
+
+## What the schedule question turns on
+
+The `schedule` prompt is the one place the background jobs are offered, so it
+shows every one of them before it asks. `prompt.show` is that table: each job
+that can run by itself, when it would run on this computer's clock, and
+whether it starts on or off.
+
+Starting on:
+
+- Morning Coffee each weekday morning, Afternoon Tea each weekday afternoon,
+  Week on Monday and Week Retro on Friday
+- one morning email with the day's meeting preps (the meeting prep row, `mode` `daily`)
+- a weekly look at who is going cold
+- learning from the mail you sent this week
+- refreshing your tone profile
+- the Workbench at login
+- two early-morning jobs: filing your meeting notes, and
+  syncing your project notes
+- the watcher that restarts any of them that fail
+
+Starting off, and offered in the same table:
+
+- a meeting prep emailed to you before each call, in place of the morning one (the same meeting prep row with `mode` `each`; the table shows one row)
+- the weekly finance brief
+- saving new contacts to your address book
+- checking for meetings nobody recorded
+- drafting your weekly client reports
+- the watcher between briefings, which sends a short Note when something moves (a different job from the one that restarts failed jobs)
+
+`Keep these` writes the table as shown, `digest.enabled` included, and
+schedules it. `Schedule nothing` schedules nothing; every skill still works
+when run by hand. Either way, Vincent (`/van-gogh:vincent`) changes any of it
+later when asked.
+
+## Rules
+
+- Every question that comes with options goes through AskUserQuestion with
+  the options the script gave, so the client taps rather than types. Five
+  questions on the happy path: notetaker, confirm, schedule, priorities,
+  deals. The answers that are typed on purpose (a notetaker key, what
+  should change in the schedule, an address, the field changes at confirm,
+  and any free text under priorities) arrive as plain messages. The
+  schedule question is asked again each time they
+  change something, until they keep a table or choose nothing.
+- Nothing the script prints is edited: `line`, `say` and `closing_text` are
+  shown as they are. Do not add summaries, do not describe what a step does.
+- Never print a token, a key, or the contents of the key file. The script
+  never does either; keep it that way in your own messages.
+- If a command fails to run at all (the interpreter is missing), tell the
+  client to run the README's install line in Terminal again, then this
+  command.

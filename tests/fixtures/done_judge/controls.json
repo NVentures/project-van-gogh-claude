@@ -1,0 +1,767 @@
+{
+ "purpose": "Planted controls for done_judge. A known-open control carries evidence that looks like completion and is not: a promise to do the work later, a meeting where the work was only discussed, the other party promising, the user chasing, an unsent draft, and one control per guard in validate(). A known_done control carries evidence that is completion. A judge that closes any known-open control is broken; so is one that closes no known_done control. Every person, firm and address here is invented. 'damning' is the sentence a careless reader would cite, which is what the stub runner cites; 'guard' names the check that must stop it; 'stub' overrides one field of the stub's answer.",
+ "today": "2026-10-01",
+ "user": {
+  "name": "Jordan Avery",
+  "variants": [
+   "Jordan Avery",
+   "Jordan"
+  ],
+  "emails": [
+   "jordan@lanternworks.example",
+   "javery.personal@mailbox.example"
+  ]
+ },
+ "controls": [
+  {
+   "id": "ctl-promise-01",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Priya Raman the updated pricing model with the freight surcharge",
+   "guard": "not_a_promise",
+   "damning": "I will send you the updated pricing model with the freight surcharge worked in by Thursday, along with a refreshed folder link.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:001",
+     "date": "2026-07-22",
+     "text": "From: jordan@lanternworks.example\nTo: priya.raman@brightwater.example\nCc: \nSubject: Pricing model\nSent: 2026-07-22  (sent)\n\nPriya, thanks for the call. I will send you the updated pricing model with the freight surcharge worked in by Thursday, along with a refreshed folder link."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-02",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Draft the Cobalt Ridge note to Anders Holm pulling from the Tessel call",
+   "guard": "not_a_promise",
+   "damning": "I am going to put together the note to Anders Holm this week and pull the numbers from our call so he has the full picture before the follow up.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:002",
+     "date": "2026-07-23",
+     "text": "From: jordan@lanternworks.example\nTo: hana@tessellabs.example\nCc: \nSubject: Cobalt Ridge\nSent: 2026-07-23  (sent)\n\nHana, good speaking today. I am going to put together the note to Anders Holm this week and pull the numbers from our call so he has the full picture before the follow up."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-03",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Kofi Mensah the Harlow Street risk summary and the survey overlays",
+   "guard": "not_a_promise",
+   "damning": "I plan to send it over with the survey overlays early next week once Wen confirms the lot size.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:003",
+     "date": "2026-07-24",
+     "text": "From: jordan@lanternworks.example\nTo: kofi@pinecrestlogistics.example\nCc: \nSubject: Harlow Street\nSent: 2026-07-24  (sent)\n\nKofi, I have the Harlow Street risk summary nearly assembled. I plan to send it over with the survey overlays early next week once Wen confirms the lot size."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-04",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Return the Marlowe markup options for the compromise guarantee structure",
+   "guard": "not_a_promise",
+   "damning": "I will review the markup options and come back with a compromise structure before the next call.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:004",
+     "date": "2026-07-25",
+     "text": "From: jordan@lanternworks.example\nTo: counsel@marlowefinch.example\nCc: \nSubject: Guarantee structure\nSent: 2026-07-25  (sent)\n\nUnderstood on the guarantee package. I will review the markup options and come back with a compromise structure before the next call."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-05",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Ines Okoro the cold storage contractor contacts",
+   "guard": "not_a_promise",
+   "damning": "I have two firms in mind and will send you the contacts once I confirm they are taking new work.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:005",
+     "date": "2026-07-27",
+     "text": "From: jordan@lanternworks.example\nTo: ines@ostravafoods.example\nCc: \nSubject: Cold storage contractors\nSent: 2026-07-27  (sent)\n\nInes, on the cold storage contractors, I have two firms in mind and will send you the contacts once I confirm they are taking new work."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-06",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Prepare the Quillon commercial position on the revised draft plus the open points list",
+   "guard": "not_a_promise",
+   "damning": "Our commercial position and the open points list are going to follow ahead of the next buyer call.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:006",
+     "date": "2026-07-28",
+     "text": "From: jordan@lanternworks.example\nTo: legal@quillonhealth.example\nCc: \nSubject: Revised draft\nSent: 2026-07-28  (sent)\n\nThanks for the revised draft. Our commercial position and the open points list are going to follow ahead of the next buyer call."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-07",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Build the first version of the client one pager tool",
+   "guard": "not_a_promise",
+   "damning": "I am going to build the first version of the one pager tool this week, then we can point it at two real clients and see if the output is worth anything.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Client tooling working session - 2026-07-29",
+     "date": "2026-07-29",
+     "text": "[speaker] Where did we land on the one pager tool?\n[microphone] I am going to build the first version of the one pager tool this week, then we can point it at two real clients and see if the output is worth anything.\n[speaker] Perfect, no rush as long as it lands before the trial."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-08",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Review the Cobalt Ridge document folder and schedule the follow up call with Hana Sato",
+   "guard": "not_a_promise",
+   "damning": "I will go through it this weekend and reach out to schedule the follow up once I have questions written down.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:008",
+     "date": "2026-07-30",
+     "text": "From: jordan@lanternworks.example\nTo: hana@tessellabs.example\nCc: \nSubject: Cobalt Ridge folder\nSent: 2026-07-30  (sent)\n\nGot the folder access, thank you. I will go through it this weekend and reach out to schedule the follow up once I have questions written down."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-09",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Luca Bianchi the warehouse location pin once the owner agrees",
+   "guard": "not_a_promise",
+   "damning": "As soon as that clears I will send the location pin and the broker contact.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:009",
+     "date": "2026-08-01",
+     "text": "From: jordan@lanternworks.example\nTo: luca@bianchifreight.example\nCc: \nSubject: Warehouse\nSent: 2026-08-01  (sent)\n\nLuca, the owner is reading the paperwork this week. As soon as that clears I will send the location pin and the broker contact."
+    }
+   ]
+  },
+  {
+   "id": "ctl-promise-10",
+   "kind": "promise",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Submit the quarterly travel expense claim",
+   "guard": "not_a_promise",
+   "damning": "I plan to run the claim this week, it is just the flights and the two hotel nights.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Finance check in - 2026-08-04",
+     "date": "2026-08-04",
+     "text": "[speaker] Did the claim go in?\n[microphone] It is on my list. I plan to run the claim this week, it is just the flights and the two hotel nights.\n[speaker] Okay, finance closes the quarter on the fifteenth."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-01",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Confirm the trial customer segment for the onboarding package",
+   "guard": "user_line",
+   "damning": "Good, so the segment question is settled for now.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Trial planning - 2026-07-21",
+     "date": "2026-07-21",
+     "text": "[speaker] Which segment do we point the trial at first?\n[microphone] We went back and forth on this. Staffing agencies are the easiest to reach and the builders pay more.\n[speaker] Good, so the segment question is settled for now.\n[microphone] No decision today, we keep both on the table and pick after the next two calls."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-02",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Decide which new sites route to Brightwater versus Selim Arda",
+   "guard": "user_line",
+   "damning": "Right, that covers the routing then.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Site routing discussion - 2026-07-22",
+     "date": "2026-07-22",
+     "text": "[speaker] Are we sending the new sites to Brightwater or to Selim?\n[microphone] That is the open question. Selim floated a much higher price per site, which changes the split math.\n[speaker] Right, that covers the routing then.\n[microphone] We are still deciding."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-03",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Plan the partner readiness workshop approach with the team",
+   "guard": "user_line",
+   "damning": "Sounds like the plan is in place.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Workshop kickoff - 2026-07-23",
+     "date": "2026-07-23",
+     "text": "[speaker] What does the workshop actually look like?\n[microphone] We spent thirty minutes on it today and I think we need another working session before anyone writes anything down.\n[speaker] Sounds like the plan is in place. A slot is held for next week."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-04",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Work through the Dara Whitlock retention package and the project bonuses",
+   "guard": "user_line",
+   "damning": "Understood, that one is handled on your side.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Team pay review - 2026-07-24",
+     "date": "2026-07-24",
+     "text": "[speaker] Where are we on retention for Dara?\n[microphone] We talked through several project bonuses versus a flat retention number. Nothing is agreed, I have not put a package in front of her.\n[speaker] Understood, that one is handled on your side."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-05",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Clarify the Novaterra bonus structure and the leftover equity per unit",
+   "guard": "user_line",
+   "damning": "Fine, the bonus structure is covered.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Novaterra check in - 2026-07-25",
+     "date": "2026-07-25",
+     "text": "[speaker] Did the equity question get answered?\n[microphone] Not yet. We covered the bonus structure at a high level and the leftover equity per unit is still an open item on my side.\n[speaker] Fine, the bonus structure is covered."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-06",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Explore the Tessel integration for the support desk with Mirela Popescu",
+   "guard": "user_line",
+   "damning": "Fair enough, the integration was explored.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Support desk review - 2026-07-27",
+     "date": "2026-07-27",
+     "text": "[speaker] Is Tessel going into the support desk?\n[microphone] We discussed what the integration would look like. It is interesting but nobody has scoped it and I have not come back to Mirela Popescu with anything.\n[speaker] Fair enough, the integration was explored."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-07",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Follow up on the Harlow Street traffic and noise study timing and the school contact",
+   "guard": "user_line",
+   "damning": "The timing follow up is done then, we revisit next week.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Harlow Street permits - 2026-07-28",
+     "date": "2026-07-28",
+     "text": "[speaker] Do we have a date on the traffic and noise study?\n[microphone] No date yet. The consultant said it depends on when the council responds, and I still owe the school contact a call.\n[speaker] The timing follow up is done then, we revisit next week."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-08",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Get the Pinecrest services agreement signed",
+   "guard": "user_line",
+   "damning": "The agreement was reviewed and is in good shape.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Agreements pipeline review - 2026-07-29",
+     "date": "2026-07-29",
+     "text": "[speaker] Pinecrest signature, where does that stand?\n[microphone] It has been sitting. We reviewed the form on this call, it is not signed and I have not sent it back to them.\n[speaker] The agreement was reviewed and is in good shape."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-09",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Follow up with Beatrix Lund on bringing the payments forward",
+   "guard": "user_line",
+   "damning": "Noted, the follow up with her is taken care of.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Finance catch up - 2026-07-30",
+     "date": "2026-07-30",
+     "text": "[speaker] Did Beatrix Lund come back on bringing the payments forward?\n[microphone] We went over the timing on this call. One to two weeks was the guidance and I have not followed up since.\n[speaker] Noted, the follow up with her is taken care of."
+    }
+   ]
+  },
+  {
+   "id": "ctl-meeting-10",
+   "kind": "meeting",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Research the regional grant programs and assess the webinar output",
+   "guard": "user_line",
+   "damning": "The research on the programs is complete as far as I can tell.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Grant application working session - 2026-08-01",
+     "date": "2026-08-01",
+     "text": "[speaker] Anything from the council webinar worth using?\n[microphone] We watched it together and talked about how the grant programs work. I have not done the actual research write up yet.\n[speaker] The research on the programs is complete as far as I can tell."
+    }
+   ]
+  },
+  {
+   "id": "ctl-owed-promise",
+   "kind": "owed_promise",
+   "dir": "to_me",
+   "who": "Rosa Calder",
+   "opened": "2026-07-20",
+   "text": "Rosa Calder to send the boundary survey",
+   "guard": "not_a_promise",
+   "damning": "I'll get the survey to you next week once the field crew is back.",
+   "counterparties": [
+    "rosa@calderland.example"
+   ],
+   "sections": [
+    {
+     "cls": "inbound_mail",
+     "source": "inbound mail work:021",
+     "date": "2026-07-28",
+     "text": "From: rosa@calderland.example\nTo: jordan@lanternworks.example\nCc: \nSubject: Boundary survey\nSent: 2026-07-28  (inbound)\n\nJordan, apologies for the delay. I'll get the survey to you next week once the field crew is back."
+    }
+   ]
+  },
+  {
+   "id": "ctl-owed-chase",
+   "kind": "owed_chase",
+   "dir": "to_me",
+   "who": "Yusuf Demir",
+   "opened": "2026-07-20",
+   "text": "Yusuf Demir to return the signed supply terms",
+   "guard": "class_allowed",
+   "damning": "Yusuf, any update on the signed supply terms?",
+   "counterparties": [
+    "yusuf@ostravafoods.example"
+   ],
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:022",
+     "date": "2026-07-29",
+     "text": "From: jordan@lanternworks.example\nTo: yusuf@ostravafoods.example\nCc: \nSubject: Supply terms\nSent: 2026-07-29  (sent)\n\nYusuf, any update on the signed supply terms? We are holding the order for them."
+    }
+   ]
+  },
+  {
+   "id": "ctl-draft-only",
+   "kind": "unsent_draft",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Callum Reyes the revised floor plan",
+   "guard": "class_allowed",
+   "damning": "Callum, attached is the revised floor plan with the loading dock moved.",
+   "sections": [
+    {
+     "cls": "draft",
+     "source": "draft mail work:023",
+     "date": "2026-07-26",
+     "text": "From: jordan@lanternworks.example\nTo: callum@reyesbuild.example\nCc: \nSubject: Revised floor plan\nSent: 2026-07-26  (draft, never sent)\n\nCallum, attached is the revised floor plan with the loading dock moved."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-fabricated",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Wen Zhao the final brochure proof",
+   "guard": "one_section",
+   "damning": "Attached is the final brochure proof.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:031",
+     "date": "2026-07-24",
+     "text": "From: jordan@lanternworks.example\nTo: wen@zhaoprint.example\nCc: \nSubject: Brochure proof\nSent: 2026-07-24  (sent)\n\nWen, the printer and I are working through the brochure proof this week."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-straddle",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send the landlord the signed lease",
+   "guard": "one_section",
+   "damning": "the signed lease went to the landlord on the fourth",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:032",
+     "date": "2026-07-24",
+     "text": "From: jordan@lanternworks.example\nTo: office@harlowestates.example\nCc: \nSubject: Lease\nSent: 2026-07-24  (sent)\n\nThanks for the reminder about the paperwork. On my desk today: the signed lease"
+    },
+    {
+     "cls": "decision",
+     "source": "decisions Premises review - 2026-07-27",
+     "date": "2026-07-27",
+     "text": "went to the landlord on the fourth is what the old tenant told us about their own lease."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-predates",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Mirela Popescu the vendor shortlist for the kitchen fit out",
+   "guard": "not_before_opened",
+   "damning": "Mirela, attached is last year's vendor shortlist for the kitchen fit out, for reference.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:033",
+     "date": "2026-07-10",
+     "text": "From: jordan@lanternworks.example\nTo: mirela@quillonhealth.example\nCc: \nSubject: Vendor shortlist\nSent: 2026-07-10  (sent)\n\nMirela, attached is last year's vendor shortlist for the kitchen fit out, for reference."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-class-claim",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send the landlord the insurance certificate",
+   "guard": "class_from_section",
+   "damning": "The insurance certificate went over to the landlord this morning.",
+   "stub": {
+    "evidence_class": "sent_mail"
+   },
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Premises catch up - 2026-07-28",
+     "date": "2026-07-28",
+     "text": "[speaker] The insurance certificate went over to the landlord this morning.\n[speaker] Good, that closes it out."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-header",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Tomas Varga the countersigned confidentiality agreement",
+   "guard": "mail_body_not_header",
+   "damning": "Subject: Countersigned confidentiality agreement for Cobalt Ridge",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:035",
+     "date": "2026-07-25",
+     "text": "From: jordan@lanternworks.example\nTo: tomas@cobaltridge.example\nCc: \nSubject: Countersigned confidentiality agreement for Cobalt Ridge\nSent: 2026-07-25  (sent)\n\nTomas, flagging that our counsel is reading one clause before anything goes out."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-quoted",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Corinne Abelard the signed easement",
+   "guard": "own_words_not_quote",
+   "damning": "attached is the signed easement, recorded with the county this morning.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:041",
+     "date": "2026-07-27",
+     "text": "From: jordan@lanternworks.example\nTo: corinne@abelardland.example\nCc: \nSubject: Re: Easement\nSent: 2026-07-27  (sent)\n\nThanks Corinne, noted. Talk next week.\n\nEARLIER IN THIS THREAD (the older message this one was written on top of; context only, never cite it):\nFrom: Corinne Abelard <corinne@abelardland.example>\nSent: Monday, July 27, 2026 9:02 AM\nTo: Jordan\nSubject: Easement\n\nJordan, attached is the signed easement, recorded with the county this morning.",
+     "own": "Thanks Corinne, noted. Talk next week."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-self-mail",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send the investors the third quarter update",
+   "guard": "real_recipient",
+   "damning": "Finished yesterday: the third quarter update went out to all investors.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:036",
+     "date": "2026-07-26",
+     "text": "From: jordan@lanternworks.example\nTo: jordan@lanternworks.example\nCc: \nSubject: Your morning briefing\nSent: 2026-07-26  (sent)\n\nFinished yesterday: the third quarter update went out to all investors."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-loop",
+   "kind": "guard",
+   "dir": "to_me",
+   "who": "Kofi Mensah",
+   "opened": "2026-07-20",
+   "text": "Kofi Mensah to send the delivery schedule",
+   "guard": "not_a_loop",
+   "damning": "Forwarding from my other account: the delivery schedule is attached and complete.",
+   "counterparties": [
+    "kofi@pinecrestlogistics.example",
+    "javery.personal@mailbox.example"
+   ],
+   "sections": [
+    {
+     "cls": "inbound_mail",
+     "source": "inbound mail work:037",
+     "date": "2026-07-27",
+     "text": "From: javery.personal@mailbox.example\nTo: jordan@lanternworks.example\nCc: \nSubject: Fwd: delivery schedule\nSent: 2026-07-27  (inbound)\n\nForwarding from my other account: the delivery schedule is attached and complete."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-denial",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Return the signed vendor contract to Ostrava Foods",
+   "guard": "not_a_denial",
+   "damning": "It is not signed and I have not sent it back to them.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Vendor review - 2026-07-29",
+     "date": "2026-07-29",
+     "text": "[speaker] Is the vendor contract back with them?\n[microphone] It is not signed and I have not sent it back to them."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-task-text",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Priya Raman the revised site plan",
+   "guard": "not_the_task",
+   "damning": "Send Priya Raman the revised site plan",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:039",
+     "date": "2026-07-23",
+     "text": "From: jordan@lanternworks.example\nTo: hana@tessellabs.example\nCc: \nSubject: Notes from today\nSent: 2026-07-23  (sent)\n\nNotes from today. Open items on my side:\nSend Priya Raman the revised site plan\nBook the venue walk through"
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-low-confidence",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Share the budget outline with Anders Holm",
+   "guard": "confidence_floor",
+   "damning": "The stand looked great.",
+   "stub": {
+    "confidence": 0.6
+   },
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:040",
+     "date": "2026-07-24",
+     "text": "From: jordan@lanternworks.example\nTo: anders@novaterra.example\nCc: \nSubject: Trade show\nSent: 2026-07-24  (sent)\n\nAnders, good to see you at the trade show. The stand looked great."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-moot",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Book the venue for the supplier dinner",
+   "guard": "moot_needs_decision",
+   "damning": "the supplier dinner may move to the spring",
+   "stub": {
+    "verdict": "moot"
+   },
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:041",
+     "date": "2026-07-25",
+     "text": "From: jordan@lanternworks.example\nTo: luca@bianchifreight.example\nCc: \nSubject: Supplier dinner\nSent: 2026-07-25  (sent)\n\nLuca, the supplier dinner may move to the spring, I am checking dates with the venue."
+    }
+   ]
+  },
+  {
+   "id": "ctl-guard-pinned",
+   "kind": "guard",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Ines Okoro the signed order form",
+   "guard": "pinned_open",
+   "damning": "Ines, the signed order form is attached.",
+   "pinned": true,
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:042",
+     "date": "2026-07-24",
+     "text": "From: jordan@lanternworks.example\nTo: ines@ostravafoods.example\nCc: \nSubject: Signed order form\nSent: 2026-07-24  (sent)\nAttachments: order-form-signed.pdf\n\nInes, the signed order form is attached."
+    }
+   ]
+  },
+  {
+   "id": "ctl-done-sent-mail",
+   "kind": "known_done",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Send Hana Sato the countersigned services agreement",
+   "guard": "",
+   "damning": "Hana, the countersigned services agreement is attached.",
+   "sections": [
+    {
+     "cls": "sent_mail",
+     "source": "sent mail work:051",
+     "date": "2026-07-24",
+     "text": "From: jordan@lanternworks.example\nTo: hana@tessellabs.example\nCc: \nSubject: Countersigned services agreement\nSent: 2026-07-24  (sent)\nAttachments: services-agreement-countersigned.pdf\n\nHana, the countersigned services agreement is attached. Nothing further is needed from our side."
+    }
+   ]
+  },
+  {
+   "id": "ctl-done-own-words",
+   "kind": "known_done",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Submit the insurance renewal form",
+   "guard": "",
+   "damning": "Yes, I submitted the insurance renewal form on Tuesday and the broker confirmed receipt.",
+   "sections": [
+    {
+     "cls": "transcript",
+     "source": "transcript Operations catch up - 2026-07-30",
+     "date": "2026-07-30",
+     "text": "[speaker] Did the renewal form go in?\n[microphone] Yes, I submitted the insurance renewal form on Tuesday and the broker confirmed receipt.\n[speaker] Great."
+    }
+   ]
+  },
+  {
+   "id": "ctl-done-delivered",
+   "kind": "known_done",
+   "dir": "to_me",
+   "who": "Luca Bianchi",
+   "opened": "2026-07-20",
+   "text": "Luca Bianchi to send the warehouse floor measurements",
+   "guard": "",
+   "damning": "Jordan, the warehouse floor measurements are attached, all three bays.",
+   "counterparties": [
+    "luca@bianchifreight.example"
+   ],
+   "sections": [
+    {
+     "cls": "inbound_mail",
+     "source": "inbound mail work:053",
+     "date": "2026-07-28",
+     "text": "From: luca@bianchifreight.example\nTo: jordan@lanternworks.example\nCc: \nSubject: Floor measurements\nSent: 2026-07-28  (inbound)\nAttachments: floor-measurements.xlsx\n\nJordan, the warehouse floor measurements are attached, all three bays."
+    }
+   ]
+  },
+  {
+   "id": "ctl-done-decision",
+   "kind": "known_done",
+   "dir": "by_me",
+   "who": "",
+   "opened": "2026-07-20",
+   "text": "Pick the venue for the autumn supplier day",
+   "guard": "",
+   "damning": "The autumn supplier day venue is picked: the riverside hall, booked for the ninth.",
+   "sections": [
+    {
+     "cls": "decision",
+     "source": "decisions Supplier day planning - 2026-08-03",
+     "date": "2026-08-03",
+     "text": "The autumn supplier day venue is picked: the riverside hall, booked for the ninth."
+    }
+   ]
+  }
+ ]
+}

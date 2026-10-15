@@ -1,0 +1,6 @@
+{
+  "_source": "CAPTURED 2026-10-01: GET https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize with an app id not enabled for personal accounts returned 302 to login.live.com, whose page (HTTP 200) is kept here with its markup trimmed to the error elements; the app id is invented. The sentence is the capture's.",
+  "status": 200,
+  "location": "",
+  "body": "<html><head><title>Microsoft account</title></head><body><div id=\"iPageTitle\">Account</div><div id=\"iErrorHeading\">We're unable to complete your request</div><div id=\"iErrorText\">unauthorized_client: The client does not exist or is not enabled for consumers. If you are the application developer, configure a new application through the App Registrations in the Azure Portal at https://go.microsoft.com/fwlink/?linkid=2083908.</div></body></html>"
+}

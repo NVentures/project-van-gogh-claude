@@ -1,0 +1,255 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pytest:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run tests
+        run: python -m pytest
+
+      # The Windows half of the fifteen-minute install (P15 and P22). The
+      # runner has no Claude CLI: prepare-only must still build the env, and
+      # the readiness check must name what is missing rather than say READY.
+      - name: Windows readiness check names the missing key file
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File check.ps1 | Out-String
+          Write-Output $out
+          if ($out -notmatch "MISSING: No key file found") { throw "check.ps1 did not name the missing key file" }
+          if ($out -match "(?m)^READY") { throw "check.ps1 said READY on a runner with no key file" }
+      # Installed but not on PATH is a different fault from not installed.
+      # Skips itself when the runner has claude on PATH or its .local\bin is.
+      - name: Windows readiness check names the PATH fault
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          if (Get-Command claude -ErrorAction SilentlyContinue) { Write-Output "claude is on PATH here: nothing to test"; exit 0 }
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File check.ps1 | Out-String
+          if ($out -notmatch "MISSING: The Claude command is not installed") { throw "check.ps1 did not say Claude is not installed" }
+          $dir = Join-Path $env:USERPROFILE ".local\bin"
+          New-Item -ItemType Directory -Force -Path $dir | Out-Null
+          $fake = Join-Path $dir "claude.exe"
+          New-Item -ItemType File -Force -Path $fake | Out-Null
+          if (Get-Command claude -ErrorAction SilentlyContinue) { Remove-Item -Force $fake; Write-Output ".local\bin is on PATH here: nothing to test"; exit 0 }
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File check.ps1 | Out-String
+          Remove-Item -Force $fake
+          Write-Output $out
+          if ($out -notmatch "MISSING: Claude is installed but this window cannot find it yet") { throw "check.ps1 did not name the PATH fault" }
+          if ($out -notmatch "SetEnvironmentVariable\('PATH'") { throw "check.ps1 did not print the PATH fix" }
+          if ($out -match "(?m)^READY") { throw "check.ps1 said READY with claude off PATH" }
+      - name: Windows setup.ps1 -PrepareOnly (PowerShell 5.1)
+        if: runner.os == 'Windows'
+        shell: powershell
+        env:
+          VAN_GOGH_STATE_DIR: ${{ runner.temp }}\van-gogh-state
+          VAN_GOGH_SETUP_LOGS: ${{ runner.temp }}\van-gogh-logs
+        run: |
+          powershell -NoProfile -ExecutionPolicy Bypass -File setup.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { Get-Content "$env:VAN_GOGH_SETUP_LOGS\setup-bootstrap.log"; throw "setup.ps1 -PrepareOnly exited $LASTEXITCODE" }
+          & "$env:VAN_GOGH_STATE_DIR\venv\Scripts\python.exe" -c "import requests, dotenv, google.oauth2, googleapiclient, msal; print('venv imports ok')"
+          if (-not (Test-Path "$env:VAN_GOGH_STATE_DIR\setup\run-id")) { throw "no run-id written" }
+          if (-not (Test-Path "$env:VAN_GOGH_STATE_DIR\requirements.sha256")) { throw "no requirements.sha256 written" }
+      - name: Windows setup.ps1 -PrepareOnly (PowerShell 7)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          VAN_GOGH_STATE_DIR: ${{ runner.temp }}\van-gogh-state-7
+          VAN_GOGH_SETUP_LOGS: ${{ runner.temp }}\van-gogh-logs-7
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File setup.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { Get-Content "$env:VAN_GOGH_SETUP_LOGS\setup-bootstrap.log"; throw "setup.ps1 -PrepareOnly exited $LASTEXITCODE under pwsh" }
+      - name: Windows model-free end-to-end install
+        if: runner.os == 'Windows'
+        shell: powershell
+        env:
+          VAN_GOGH_STATE_DIR: ${{ runner.temp }}\van-gogh-state
+        run: python -m pytest tests/test_setup_flow_e2e.py -q
+
+  # The Codex lane: the same plugin installed through Codex on all three
+  # runners, with no model calls and no sign-in. tools/codex_ci_check.py runs
+  # the README's own paste line, the setup lane for the checkout, the five-way
+  # version equality, the skill set the model is shown, and the Codex hook;
+  # tests/test_codex_surface.py checks every flag host.py uses against the
+  # installed binary. The CLI is pinned so a Codex release cannot turn this
+  # red on its own; codex-latest below is where that is seen first.
+  codex-install:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      CODEX_VERSION: "0.162.1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install the Codex CLI (pinned)
+        if: runner.os != 'Windows'
+        run: npm install -g @openai/codex@${{ env.CODEX_VERSION }}
+      - name: Install the Codex CLI (official Windows installer)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          irm https://chatgpt.com/codex/install.ps1 | iex
+          $bin = Join-Path $env:USERPROFILE ".codex\packages\standalone\current\bin"
+          Add-Content -Path $env:GITHUB_PATH -Value $bin
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytest
+      - name: The README's Codex paste lines (tools/readme_lines.py)
+        run: |
+          python tools/readme_lines.py --section mac
+          python tools/readme_lines.py --section windows
+      - name: Codex lane (README line, setup lane, versions, skills, hook)
+        run: python tools/codex_ci_check.py
+      - name: Windows readiness check under Codex with a stub command (P14)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP "codex-stub"
+          New-Item -ItemType Directory -Force -Path $dir | Out-Null
+          Set-Content -Path (Join-Path $dir "codex.cmd") -Value "@echo Logged in using ChatGPT"
+          $env:PATH = "$dir;$env:PATH"
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File check.ps1 -Host codex | Out-String
+          Write-Output $out
+          if ($out -notmatch "ok: Codex is installed and signed in") { throw "check.ps1 -Host codex did not see the stub as signed in" }
+          if ($out -match "Claude is installed") { throw "check.ps1 -Host codex asked Claude" }
+      - name: Windows Codex hook prints the one line with a planted checklist (P9)
+        if: runner.os == 'Windows'
+        shell: powershell
+        env:
+          VAN_GOGH_STATE_DIR: ${{ runner.temp }}\van-gogh-hook-state
+          CLAUDE_PLUGIN_ROOT: ${{ github.workspace }}
+        run: |
+          python -c "import sys; sys.path.insert(0, 'app'); import setup_state as ss; d = ss.new('ci'); [ss.set_status(d, k, ss.DONE) for k in ('plugin', 'python', 'credentials')]; ss.save(d)"
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File hooks\setup_notice.ps1 -Codex | Out-String
+          Write-Output $out
+          if ($out -notmatch "^Van Gogh setup: ") { throw "no line" }
+          if ($out -notmatch [regex]::Escape('$van-gogh:install-van-gogh')) { throw "not the Codex spelling" }
+          if ($out -match "systemMessage") { throw "JSON form under Codex" }
+      - name: Windows Codex chat start asks about a newer Van Gogh
+        if: runner.os == 'Windows'
+        shell: powershell
+        env:
+          VAN_GOGH_STATE_DIR: ${{ runner.temp }}\van-gogh-update-state
+          CLAUDE_PLUGIN_ROOT: ${{ github.workspace }}
+        run: |
+          python -m venv (Join-Path $env:VAN_GOGH_STATE_DIR "venv")
+          Set-Content -LiteralPath (Join-Path $env:VAN_GOGH_STATE_DIR "plugin-update.json") -Value '{"update_available": true, "published": "99.0.0", "installed": "0.1.0", "checked_at": 0}'
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File hooks\update_notice.ps1 -Codex | Out-String
+          Write-Output $out
+          if ($out -notmatch "^Van Gogh 99\.0\.0 is ready\.") { throw "no question" }
+          if ($out -notmatch "--apply" -or $out -notmatch "--decline") { throw "no command for an answer" }
+          Set-Content -LiteralPath (Join-Path $env:VAN_GOGH_STATE_DIR "plugin-update.json") -Value '{"update_available": true, "published": "99.0.0", "declined": "99.0.0", "checked_at": 0}'
+          $quiet = powershell -NoProfile -ExecutionPolicy Bypass -File hooks\update_notice.ps1 -Codex | Out-String
+          if ($quiet.Trim()) { throw "asked again after Not now: $quiet" }
+      - name: Windows Codex first run prepares the computer in the background (in-app install)
+        if: runner.os == 'Windows'
+        shell: powershell
+        env:
+          VAN_GOGH_STATE_DIR: ${{ runner.temp }}\van-gogh-firstrun-state
+        run: |
+          $root = Join-Path $env:RUNNER_TEMP "vg-stub-root"
+          New-Item -ItemType Directory -Force -Path (Join-Path $root "hooks") | Out-Null
+          Copy-Item hooks\setup_notice.ps1, hooks\codex_bootstrap.ps1 (Join-Path $root "hooks")
+          $calls = Join-Path $env:RUNNER_TEMP "vg-stub-calls.txt"
+          Set-Content -LiteralPath (Join-Path $root "setup.ps1") -Value @(
+            'param([Alias("Host")][string]$Client = "", [switch]$FromHook)',
+            ('Add-Content -LiteralPath "' + $calls + '" -Value "$Client $FromHook"'),
+            'Write-Output "Prepared."',
+            'exit 0')
+          $env:CLAUDE_PLUGIN_ROOT = $root
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root "hooks\setup_notice.ps1") -Codex | Out-String
+          Write-Output $out
+          if ($out -notmatch "^Van Gogh is getting this computer ready in the background") { throw "no first-run line" }
+          $rc = Join-Path $env:VAN_GOGH_STATE_DIR "setup\bootstrap.rc"
+          $deadline = (Get-Date).AddSeconds(90)
+          while (-not (Test-Path -LiteralPath $rc) -and (Get-Date) -lt $deadline) { Start-Sleep -Milliseconds 500 }
+          if (-not (Test-Path -LiteralPath $rc)) { throw "the background preparation never finished" }
+          Get-Content -LiteralPath (Join-Path $env:VAN_GOGH_STATE_DIR "setup\bootstrap.out")
+          if ((Get-Content -LiteralPath $rc -Raw).Trim() -ne "0") { throw "the preparation did not exit 0" }
+          $c = (Get-Content -LiteralPath $calls -Raw).Trim()
+          if ($c -ne "codex True") { throw "setup.ps1 was called as: $c" }
+      - name: Windows Codex first chat prepares the computer when the hook never ran
+        if: runner.os == 'Windows'
+        shell: powershell
+        env:
+          VAN_GOGH_STATE_DIR: ${{ runner.temp }}\van-gogh-firstchat-state
+        run: |
+          $root = Join-Path $env:RUNNER_TEMP "vg-stub-root-2"
+          New-Item -ItemType Directory -Force -Path (Join-Path $root "hooks") | Out-Null
+          Copy-Item hooks\setup_notice.ps1, hooks\codex_bootstrap.ps1 (Join-Path $root "hooks")
+          $calls = Join-Path $env:RUNNER_TEMP "vg-stub-calls-2.txt"
+          Set-Content -LiteralPath (Join-Path $root "setup.ps1") -Value @(
+            'param([Alias("Host")][string]$Client = "", [switch]$FromHook)',
+            ('Add-Content -LiteralPath "' + $calls + '" -Value "$Client $FromHook"'),
+            'Write-Output "Prepared."',
+            'exit 0')
+          Remove-Item Env:CLAUDE_PLUGIN_ROOT -ErrorAction SilentlyContinue
+          $out = powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root "hooks\setup_notice.ps1") -Codex -FirstChat | Out-String
+          Write-Output $out
+          if ($out -notmatch "^Van Gogh is ready on this computer") { throw "no ready line" }
+          if ((Get-Content -LiteralPath (Join-Path $env:VAN_GOGH_STATE_DIR "setup\bootstrap.rc") -Raw).Trim() -ne "0") { throw "rc not 0" }
+          $c = (Get-Content -LiteralPath $calls -Raw).Trim()
+          if ($c -ne "codex True") { throw "setup.ps1 was called as: $c" }
+      - name: Every Codex flag host.py uses exists in this binary
+        env:
+          VAN_GOGH_REQUIRE_CODEX: "1"
+        run: python -m pytest tests/test_codex_surface.py -q
+
+  codex-latest:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install the newest Codex CLI
+        run: npm install -g @openai/codex
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytest
+      - name: Codex lane on the newest release
+        run: python tools/codex_ci_check.py
+      - name: Every Codex flag host.py uses exists in the newest release
+        env:
+          VAN_GOGH_REQUIRE_CODEX: "1"
+        run: python -m pytest tests/test_codex_surface.py -q
+
+  plugin-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate plugin + marketplace manifests
+        # No --strict: the flag was removed from the CLI, and a job that
+        # passes only because an old pinned CLI ignores an unknown option
+        # breaks for a bogus reason the day CI updates.
+        run: claude plugin validate .

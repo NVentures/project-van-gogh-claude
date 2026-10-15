@@ -1,0 +1,14 @@
+{
+  "name": "van-gogh",
+  "version": "0.94.1",
+  "description": "Personal chief of staff: daily/weekly briefings, meeting prep, meeting-notes ingestion, relationship radar, and voice tools wired into your Obsidian vault.",
+  "skills": "./skills/",
+  "hooks": "./hooks/codex-hooks.json",
+  "interface": {
+    "displayName": "Van Gogh",
+    "shortDescription": "Your chief of staff: briefings, meeting prep and a vault that remembers.",
+    "longDescription": "Personal chief of staff: daily/weekly briefings, meeting prep, meeting-notes ingestion, relationship radar, and voice tools wired into your Obsidian vault.",
+    "developerName": "Nobel Chang and Wesley Chang",
+    "category": "productivity"
+  }
+}

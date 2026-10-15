@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "arm": "serial",
+  "code_sha": "85b11d5c8088b5e7e8c099cd8ab6a76bf0cb54d5",
+  "started": "2026-10-01T17:15:07",
+  "python": "~/Documents/Van Gogh Full Repo/project-van-gogh/.venv/bin/python",
+  "temp": {
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-8d_trbae",
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-tg9czmf5",
+    "kept": false
+  },
+  "isolation": {
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-tg9czmf5",
+    "van_gogh_root": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-tg9czmf5/van-gogh",
+    "logs_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-tg9czmf5/van-gogh/logs",
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-8d_trbae",
+    "env_file": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-8d_trbae/.env"
+  },
+  "real_hashes": {
+    "before": {
+      "env": "746781ad1b15085c6908a05c651b208654b7109bdd374bc1982535bafa9b5db8",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 548
+    },
+    "after": {
+      "env": "746781ad1b15085c6908a05c651b208654b7109bdd374bc1982535bafa9b5db8",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 548
+    },
+    "unchanged": true
+  },
+  "stages": {
+    "scan": {
+      "seconds": 156.6,
+      "rc": 0,
+      "counts": {
+        "threads_scanned": 504,
+        "sections": {
+          "waiting_on_user": 6,
+          "inbox_pending": 179,
+          "filtered_pending": 270,
+          "cold_urgent": 48,
+          "cold_monitor": 1,
+          "suppressed": 0
+        },
+        "since_days": 60,
+        "errors": 1
+      },
+      "error": null
+    },
+    "propose": {
+      "seconds": 0.1,
+      "rc": 0,
+      "counts": {
+        "deals": 15,
+        "entities": 14
+      },
+      "error": null
+    },
+    "apply": {
+      "seconds": 0.1,
+      "rc": 0,
+      "counts": {
+        "deals_written": 12,
+        "entities_written": 13,
+        "ticked_deals": 15,
+        "ticked_entities": 14
+      },
+      "error": null
+    },
+    "ingest": {
+      "seconds": 279.2,
+      "rc": 0,
+      "counts": {
+        "available": 10,
+        "list_seconds": 0.7,
+        "list_rc": 0,
+        "filed": 10,
+        "reported_ingested": 10,
+        "reported_skipped": 0,
+        "ingested_ok": true,
+        "backfilled": true,
+        "errors": []
+      },
+      "error": null
+    },
+    "first_briefing_data": {
+      "seconds": 453.7,
+      "rc": 0,
+      "counts": {
+        "threads": 446,
+        "sections": {
+          "waiting_on_user": 4,
+          "inbox_pending": 193,
+          "filtered_pending": 248,
+          "cold_urgent": 0,
+          "cold_monitor": 1,
+          "suppressed": 0
+        },
+        "calendar": 32,
+        "errors": 18
+      },
+      "error": null
+    }
+  },
+  "total_seconds": 889.7,
+  "wall_seconds": 890.5,
+  "floors": {
+    "checked": [
+      "threads scanned 504 >= 50",
+      "deals proposed 15 >= 1",
+      "meetings filed 10 == min(10, 10) = 10"
+    ],
+    "failures": [],
+    "ok": true
+  },
+  "pages": {
+    "bae88241498282c7": "690953bf124c23a30e169ed5eeaad8286b6b364da8f460e12f6decce169b65f2",
+    "4951b7dce73cd742": "74c02597ba1d5273370d2cb2a17eb92b07bae2e8cb22fff02b1ec6d7ab4d08a5",
+    "0d440816e89da707": "48db93d6a55b75d4b646007a2722662d9b9a6a4e9e86e5b8f70757f03aa5b283",
+    "b68ccfe5d4320883": "685ddb02d64656a809bf84f139414dafe8eb5c1ccfc01cd2fc42eb9399b7fba7",
+    "b756a5307f18117e": "cf5675818299ff4ceee30893f4cf9b9facf777c3ce386ff002373fb5a909cbef",
+    "7c2dee5522bf20f8": "184c2de4122eda5a7c83f2cd09570063959b15af74654fd2f5d3240259de55db",
+    "69b8507d9088cdac": "df452fb835c8fc0ede16d13a72468b92234801621c7ecd2b78486312a858c5b2",
+    "18a92458e0ab44d1": "4782ab8ea1e3ea8f7938fb4ea48e3e9ae3edbc2d14e2f510621821a64034e4ac",
+    "5e3836653d135570": "18e7355af5d5c2002e0250192eb336812bf7ecc379e12920af62385744ff8ecd",
+    "44cad21e2040cd1d": "666b56eada79ba5115685f10ece5116f9311aafd7d5a555aa5b3f5722c874a51",
+    "a870f0b8d99ba019": "4e0508cc61d854ab9d618e49ff3f742103c82e6b9c41484944169ce7a24ec0ee"
+  },
+  "errors": [],
+  "finished": "2026-10-01T17:29:57",
+  "repo": "~/Documents/Van Gogh Full Repo/project-van-gogh",
+  "tree": {
+    "dirty": true,
+    "modified_files": 70,
+    "note": "working tree carried other lanes' uncommitted speedup work (34 tracked files changed, app/fanout.py untracked) when this ran; git status counted after the run. Not the base-commit control; see harness-serial-base.json."
+  }
+}

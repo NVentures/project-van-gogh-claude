@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "arm": "serial",
+  "code_sha": "6266ea3abb94360fe9796aade9493e7e932ad394",
+  "repo": "~/Documents/Van Gogh Full Repo/project-van-gogh",
+  "tree": {
+    "dirty": true,
+    "modified_files": 8
+  },
+  "started": "2026-10-01T19:35:00",
+  "python": "~/Documents/Van Gogh Full Repo/project-van-gogh/.venv/bin/python",
+  "temp": {
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-08ifzv5g",
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-bx7585_4",
+    "kept": true
+  },
+  "isolation": {
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-bx7585_4",
+    "van_gogh_root": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-bx7585_4/van-gogh",
+    "logs_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-bx7585_4/van-gogh/logs",
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-08ifzv5g",
+    "env_file": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-08ifzv5g/.env"
+  },
+  "real_hashes": {
+    "before": {
+      "env": "5c1a220e12500f85be9469b19f470e9c7ac0b440a06ae63e2836983bc2a9a2fb",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 548
+    },
+    "after": {
+      "env": "5c1a220e12500f85be9469b19f470e9c7ac0b440a06ae63e2836983bc2a9a2fb",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 548
+    },
+    "unchanged": true
+  },
+  "stages": {
+    "scan": {
+      "seconds": 148.4,
+      "rc": 0,
+      "counts": {
+        "threads_scanned": 489,
+        "sections": {
+          "waiting_on_user": 20,
+          "inbox_pending": 196,
+          "filtered_pending": 253,
+          "cold_urgent": 19,
+          "cold_monitor": 1,
+          "suppressed": 0
+        },
+        "since_days": 60,
+        "errors": 3
+      },
+      "error": null
+    },
+    "propose": {
+      "seconds": 0.3,
+      "rc": 0,
+      "counts": {
+        "deals": 15,
+        "entities": 15
+      },
+      "error": null
+    },
+    "apply": {
+      "seconds": 0.1,
+      "rc": 0,
+      "counts": {
+        "deals_written": 11,
+        "entities_written": 14,
+        "ticked_deals": 15,
+        "ticked_entities": 15
+      },
+      "error": null
+    },
+    "ingest": {
+      "seconds": 273.5,
+      "rc": 0,
+      "counts": {
+        "available": 10,
+        "list_seconds": 0.9,
+        "list_rc": 0,
+        "filed": 10,
+        "reported_ingested": 10,
+        "reported_skipped": 0,
+        "ingested_ok": true,
+        "backfilled": true,
+        "errors": []
+      },
+      "error": null
+    },
+    "first_briefing_data": {
+      "seconds": 23.9,
+      "rc": 0,
+      "counts": {
+        "path": "first-briefing (reuse-scan)",
+        "runs": {
+          "week": {
+            "seconds": 20.8,
+            "rc": 0,
+            "which": "week",
+            "data": true
+          },
+          "auto": {
+            "seconds": 3.1,
+            "rc": 0,
+            "which": "afternoon-tea",
+            "data": true
+          }
+        }
+      },
+      "error": null
+    }
+  },
+  "total_seconds": 446.2,
+  "wall_seconds": 447.5,
+  "floors": {
+    "checked": [
+      "threads scanned 489 >= 50",
+      "deals proposed 15 >= 1",
+      "meetings filed 10 == min(10, 10) = 10"
+    ],
+    "failures": [],
+    "ok": true
+  },
+  "pages": {
+    "bae88241498282c7": "4379f771f61afaaf0cbd0e11506d303719be54baa504f562a40389b5190534fa",
+    "4951b7dce73cd742": "d6e6c2880bb8938da2065002703a5b43dc230383846ae403fe18f2b73616798c",
+    "0d440816e89da707": "480ca0d49349b9e4b0e0c5688dd62c370a3f30b877213f32ddcfc8fc46e4e5e5",
+    "b68ccfe5d4320883": "278255933cf6df0252431ecc8a6225274df8675ca4b0bbd199abd297f8f4bb0f",
+    "b756a5307f18117e": "833839c19136b6833383c2e011822029cc233657276b69701e95fe2d9c103821",
+    "7c2dee5522bf20f8": "9b48bbc843566ba496b50b2b92e95b71efcf51a35c6038d96bea6f7697e5c179",
+    "69b8507d9088cdac": "b8d04ca757fa6c768a84d7e716957c7e9685f3d56bd1cace57e6dbcbe2950945",
+    "18a92458e0ab44d1": "6e299d7664a85f23b8ecb84676c22af7d657bac0e26cf727c8a21e4523710355",
+    "5e3836653d135570": "b4d66ef60e58e3582cb7154be78a9eafcbc167c8f2ed162d8ea3e4ab54a13ae3",
+    "44cad21e2040cd1d": "8e6e0d9016eb106765607b0b6f585fe3c11f360ea57a5f2c1e6e4af2ec4fea9b",
+    "a870f0b8d99ba019": "4e0508cc61d854ab9d618e49ff3f742103c82e6b9c41484944169ce7a24ec0ee"
+  },
+  "errors": [],
+  "pages_structure": {
+    "bae88241498282c7": {
+      "identity": "65b72ffa0df86217",
+      "synthesis": "transcript",
+      "sections": "6c1a84904472fd4a"
+    },
+    "4951b7dce73cd742": {
+      "identity": "4d6a4dab390167ae",
+      "synthesis": "transcript",
+      "sections": "a5f18ba36a3c79b8"
+    },
+    "0d440816e89da707": {
+      "identity": "ffceda5ba07d2493",
+      "synthesis": "transcript",
+      "sections": "e7f19aeef7d59094"
+    },
+    "b68ccfe5d4320883": {
+      "identity": "b6c3be007ecca400",
+      "synthesis": "transcript",
+      "sections": "1106d38fd9315c90"
+    },
+    "b756a5307f18117e": {
+      "identity": "011c048bdbda2ab7",
+      "synthesis": "transcript",
+      "sections": "06e7d5c3aab628da"
+    },
+    "7c2dee5522bf20f8": {
+      "identity": "d8032824d58866eb",
+      "synthesis": "transcript",
+      "sections": "8bd0936abbf85729"
+    },
+    "69b8507d9088cdac": {
+      "identity": "e03a8e35b6e1189e",
+      "synthesis": "transcript",
+      "sections": "a6a9edae2c85347a"
+    },
+    "18a92458e0ab44d1": {
+      "identity": "3d32f4396cb8c0d5",
+      "synthesis": "transcript",
+      "sections": "47b5527f63cb6d3a"
+    },
+    "5e3836653d135570": {
+      "identity": "b6ec79f9c646e81b",
+      "synthesis": "transcript",
+      "sections": "d952dc1d1ee6a7b5"
+    },
+    "44cad21e2040cd1d": {
+      "identity": "6dd41dfa4762f051",
+      "synthesis": "transcript",
+      "sections": "6f2c60847f31c6f7"
+    },
+    "a870f0b8d99ba019": {
+      "identity": "60f930f92fbed3f8",
+      "synthesis": "",
+      "sections": "e8bdb19a9fd20d91"
+    }
+  },
+  "stage_sum_seconds": 446.2,
+  "finished": "2026-10-01T19:42:27"
+}

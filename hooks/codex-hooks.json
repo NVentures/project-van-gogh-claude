@@ -1,0 +1,36 @@
+{
+  "description": "Van Gogh under Codex: the one line about an unfinished install at session start, and the hand-off line Vincent owes at the end of a turn. Same scripts as hooks/hooks.json, spelled for Codex, with a PowerShell command for Windows.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/setup_notice.sh\" --codex",
+            "commandWindows": "powershell -NoProfile -ExecutionPolicy Bypass -File \"${CLAUDE_PLUGIN_ROOT}/hooks/setup_notice.ps1\" -Codex",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/update_notice.sh\" --codex",
+            "commandWindows": "powershell -NoProfile -ExecutionPolicy Bypass -File \"${CLAUDE_PLUGIN_ROOT}/hooks/update_notice.ps1\" -Codex",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/handoff_line.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

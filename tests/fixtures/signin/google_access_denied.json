@@ -1,0 +1,4 @@
+{
+  "_source": "CAPTURED 2026-10-01: GET https://accounts.google.com/o/oauth2/v2/auth with the real shared client id, redirect_uri=http://localhost:8080/, response_type=code, scope=openid, state and prompt=none (no browser session) returned HTTP 302 to http://localhost:8080/?state=<state>&error_subtype=access_denied&error=interaction_required. The parameter set and order are the capture's; error is changed from interaction_required to access_denied, the value a person's Cancel on the consent screen produces (RFC 6749 section 4.1.2.1); state is invented.",
+  "redirect_url": "http://localhost:8080/?state=q8Zt0mX4vL2kPq9sNw1yA3bC5dE7fG&error_subtype=access_denied&error=access_denied"
+}

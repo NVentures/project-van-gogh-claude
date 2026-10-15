@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "arm": "fast",
+  "code_sha": "38715c020b0f2d01581796704ec25ab4851d1598",
+  "repo": "~/Documents/Van Gogh Full Repo/project-van-gogh",
+  "tree": {
+    "dirty": true,
+    "modified_files": 26
+  },
+  "started": "2026-10-01T23:50:40",
+  "python": "~/Documents/Van Gogh Full Repo/project-van-gogh/.venv/bin/python",
+  "temp": {
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-5o4pg8il",
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-qiymnxbz",
+    "kept": true
+  },
+  "isolation": {
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-qiymnxbz",
+    "van_gogh_root": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-qiymnxbz/van-gogh",
+    "logs_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-qiymnxbz/van-gogh/logs",
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-5o4pg8il",
+    "env_file": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-5o4pg8il/.env"
+  },
+  "real_hashes": {
+    "before": {
+      "env": "5c1a220e12500f85be9469b19f470e9c7ac0b440a06ae63e2836983bc2a9a2fb",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 551
+    },
+    "after": {
+      "env": "5c1a220e12500f85be9469b19f470e9c7ac0b440a06ae63e2836983bc2a9a2fb",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 551
+    },
+    "unchanged": true
+  },
+  "stages": {
+    "scan": {
+      "seconds": 134.6,
+      "rc": 0,
+      "counts": {
+        "threads_scanned": 490,
+        "sections": {
+          "waiting_on_user": 18,
+          "inbox_pending": 185,
+          "filtered_pending": 265,
+          "cold_urgent": 21,
+          "cold_monitor": 1,
+          "suppressed": 0
+        },
+        "since_days": 60,
+        "errors": 0
+      },
+      "error": null
+    },
+    "propose": {
+      "seconds": 0.1,
+      "rc": 0,
+      "counts": {
+        "deals": 15,
+        "entities": 14
+      },
+      "error": null
+    },
+    "apply": {
+      "seconds": 0.1,
+      "rc": 0,
+      "counts": {
+        "deals_written": 11,
+        "entities_written": 13,
+        "ticked_deals": 15,
+        "ticked_entities": 14
+      },
+      "error": null
+    },
+    "ingest": {
+      "seconds": 135.7,
+      "rc": 0,
+      "counts": {
+        "available": 10,
+        "list_seconds": 0.7,
+        "list_rc": 0,
+        "filed": 10,
+        "overlapped_with_scan": true,
+        "summaries_seconds": 135.4,
+        "filing_seconds": 0.2,
+        "prefetch_width": 5,
+        "summary_timings": [
+          18.7,
+          22.2,
+          24.2,
+          24.6,
+          24.6,
+          25.2,
+          27.7,
+          32.6,
+          33.8,
+          35.7
+        ],
+        "model": {
+          "calls": 10,
+          "throttle_retries": 0,
+          "fallbacks": 0,
+          "seconds": 261.0337379556149
+        },
+        "staged": {
+          "filed": 10,
+          "failed": 0,
+          "deferred": 0
+        },
+        "ingested_ok": true,
+        "backfilled": true,
+        "degraded": null,
+        "errors": []
+      },
+      "error": null
+    },
+    "first_briefing_data": {
+      "seconds": 18.5,
+      "rc": 0,
+      "counts": {
+        "path": "first-briefing (reuse-scan)",
+        "runs": {
+          "week": {
+            "seconds": 15.5,
+            "rc": 0,
+            "which": "week",
+            "data": true
+          },
+          "auto": {
+            "seconds": 3.0,
+            "rc": 0,
+            "which": "afternoon-tea",
+            "data": true
+          }
+        }
+      },
+      "error": null
+    }
+  },
+  "total_seconds": 154.3,
+  "wall_seconds": 154.4,
+  "floors": {
+    "checked": [
+      "threads scanned 490 >= 50",
+      "deals proposed 15 >= 1",
+      "meetings filed 10 == min(10, 10) = 10"
+    ],
+    "failures": [],
+    "ok": true
+  },
+  "pages": {
+    "bae88241498282c7": "6140a7805964fe629586e2a640b1b2071038b0f3169057133ea1d0905d530ccf",
+    "4951b7dce73cd742": "b4eb52c68ea1ab0fdfd6190bc67fc2a34b3e321c8300f42d43ec3c2fdf5b9d5e",
+    "0d440816e89da707": "13340951eb6812377ed524953be99f5d412d5aabdc70261d3aeeb73f38556060",
+    "b68ccfe5d4320883": "f3afda69eaa6003529ba57343128d87c5b5bb683059fd5c0375ee86d962a67ab",
+    "b756a5307f18117e": "dca133337ad8565574002e000f24486ccd1f4176abbd4861b416645546eaf119",
+    "7c2dee5522bf20f8": "6961a989f16df9351d9d4ba34dddb6ea691f8b526375a4eb53d2b91d77e1c425",
+    "69b8507d9088cdac": "7c5fac9bfc1d12acd6c0479eaa1eb8730876282d90fba2eceac76963a74369b3",
+    "18a92458e0ab44d1": "da57c0735b87ce647e3d48e89302ccadcf7d6d6d372cb394a6e64a6d6fbdc826",
+    "5e3836653d135570": "b38a59cbab17e6db5f64f023aeaebe1cb17885a1df691ac2c5c35c63d71322d9",
+    "44cad21e2040cd1d": "ee16ac725fe59707f68e30f5552fd0626b563f547bdd4132db643ded9dcf0502",
+    "a870f0b8d99ba019": "4e0508cc61d854ab9d618e49ff3f742103c82e6b9c41484944169ce7a24ec0ee"
+  },
+  "errors": [],
+  "pages_structure": {
+    "bae88241498282c7": {
+      "identity": "65b72ffa0df86217",
+      "synthesis": "transcript",
+      "sections": "6c1a84904472fd4a"
+    },
+    "4951b7dce73cd742": {
+      "identity": "4d6a4dab390167ae",
+      "synthesis": "transcript",
+      "sections": "a5f18ba36a3c79b8"
+    },
+    "0d440816e89da707": {
+      "identity": "ffceda5ba07d2493",
+      "synthesis": "transcript",
+      "sections": "e7f19aeef7d59094"
+    },
+    "b68ccfe5d4320883": {
+      "identity": "b6c3be007ecca400",
+      "synthesis": "transcript",
+      "sections": "1106d38fd9315c90"
+    },
+    "b756a5307f18117e": {
+      "identity": "011c048bdbda2ab7",
+      "synthesis": "transcript",
+      "sections": "06e7d5c3aab628da"
+    },
+    "7c2dee5522bf20f8": {
+      "identity": "d8032824d58866eb",
+      "synthesis": "transcript",
+      "sections": "8bd0936abbf85729"
+    },
+    "69b8507d9088cdac": {
+      "identity": "e03a8e35b6e1189e",
+      "synthesis": "transcript",
+      "sections": "a6a9edae2c85347a"
+    },
+    "18a92458e0ab44d1": {
+      "identity": "3d32f4396cb8c0d5",
+      "synthesis": "transcript",
+      "sections": "47b5527f63cb6d3a"
+    },
+    "5e3836653d135570": {
+      "identity": "b6ec79f9c646e81b",
+      "synthesis": "transcript",
+      "sections": "d952dc1d1ee6a7b5"
+    },
+    "44cad21e2040cd1d": {
+      "identity": "6dd41dfa4762f051",
+      "synthesis": "transcript",
+      "sections": "6f2c60847f31c6f7"
+    },
+    "a870f0b8d99ba019": {
+      "identity": "60f930f92fbed3f8",
+      "synthesis": "",
+      "sections": "e8bdb19a9fd20d91"
+    }
+  },
+  "stage_sum_seconds": 289.0,
+  "overlap": true,
+  "finished": "2026-10-01T23:53:14"
+}

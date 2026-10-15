@@ -1,0 +1,1 @@
+{"error":{"code":"BadRequest","message":"Invalid filter clause: A binary operator with incompatible types was detected. Found operand types 'Edm.DateTimeOffset' and 'Edm.String' for operator kind 'GreaterThan'.","innerError":{"date":"2026-10-02T00:48:33","request-id":"00000000-0000-0000-0000-000000000000","client-request-id":"00000000-0000-0000-0000-000000000000"}}}

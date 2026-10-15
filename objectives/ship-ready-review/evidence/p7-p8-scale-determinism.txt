@@ -1,0 +1,13 @@
+P7  configured buckets: 40
+P7  rendered buckets:   40
+P7  missing:            none
+P7  unexpected:         none
+P7  items in:           500
+P7  items rendered:     500
+P7  rendered chars:     41689
+P7  wall clock:         0.00s
+
+P8  three renders: 6c6b80d1b16dbff5 6c6b80d1b16dbff5 6c6b80d1b16dbff5
+P8  identical:     True
+
+RESULT: PASS

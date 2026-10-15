@@ -1,0 +1,12 @@
+{
+  "_source": "CAPTURED 2026-10-01: POST https://login.microsoftonline.com/common/oauth2/v2.0/token with the real shared client id, grant_type=authorization_code, a bogus code and redirect_uri=http://localhost returned HTTP 400 with exactly these seven keys (error, error_description, error_codes, timestamp, trace_id, correlation_id, error_uri; error_codes is a list of int). The capture was AADSTS9002313 (malformed request). Changed to the admin-consent class: error_codes 65001, the AADSTS65001 sentence in error_description, code=65001 in error_uri. trace_id, correlation_id, the Trace ID / Correlation ID / Timestamp lines and timestamp are invented. Field order and types are the capture's.",
+  "error": "invalid_grant",
+  "error_description": "AADSTS65001: The user or administrator has not consented to use the application with ID 'f783a7e4-0000-4024-8af1-000000000000' named 'Van Gogh'. Send an interactive authorization request for this user and resource. Trace ID: 2b2b9f0e-1111-4c6a-9d2d-aaaaaaaaaaaa Correlation ID: 7d0e3c1a-2222-4b8e-8c9f-bbbbbbbbbbbb Timestamp: 2026-10-01 20:14:33Z",
+  "error_codes": [
+    65001
+  ],
+  "timestamp": "2026-10-01 20:14:33Z",
+  "trace_id": "2b2b9f0e-1111-4c6a-9d2d-aaaaaaaaaaaa",
+  "correlation_id": "7d0e3c1a-2222-4b8e-8c9f-bbbbbbbbbbbb",
+  "error_uri": "https://login.microsoftonline.com/error?code=65001"
+}

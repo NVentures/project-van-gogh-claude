@@ -1,0 +1,131 @@
+{
+  "_about": "Sanitised listing of the developer's own Van Gogh install, gathered 2026-10-01 for the adoption tests (P28). File and key NAMES are real; every value is a placeholder of the same shape. No mail, no token, no address.",
+  "plugin_version_installed": "0.80.2",
+  "state_dir": {
+    "files": [
+      ".env",
+      "advisor-state.json",
+      "claude-cli-update.json",
+      "google_client_secret.json",
+      "job-watch-state.json",
+      "legacy-jobs.sha256",
+      "ms_client_secret.json",
+      "plugin-root",
+      "plugin-update.json",
+      "quotes.json",
+      "repair-state.json",
+      "requirements.sha256",
+      "vault-pointer",
+      "whats-new.json",
+      "workbench_session.json"
+    ],
+    "dirs": [
+      "inflight",
+      "venv"
+    ],
+    "env": {
+      "GOOGLE_MAPS_API_KEY": "PLACEHOLDER_MAPS_KEY",
+      "VAN_GOGH_HOME_ADDRESS": "PLACEHOLDER_ADDRESS",
+      "GOOGLE_REFRESH_TOKEN_PERSONAL": "PLACEHOLDER_GOOGLE_REFRESH_TOKEN",
+      "VAN_GOGH_CUSTOM_REPO": "PLACEHOLDER_ORG/PLACEHOLDER_REPO",
+      "VAN_GOGH_CUSTOM_TOKEN": "PLACEHOLDER_GITHUB_TOKEN",
+      "GRANOLA_API_KEY": "PLACEHOLDER_GRANOLA_KEY",
+      "MS_GRAPH_REFRESH_TOKEN_WORK": "PLACEHOLDER_MS_REFRESH_TOKEN"
+    },
+    "google_client_secret": {
+      "installed": {
+        "client_id": "PLACEHOLDER_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+        "client_secret": "PLACEHOLDER_GOOGLE_CLIENT_SECRET",
+        "project_id": "placeholder-project",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "redirect_uris": [
+          "http://localhost"
+        ]
+      }
+    },
+    "ms_client_secret": {
+      "client_id": "PLACEHOLDER_MS_CLIENT_ID",
+      "tenant_id": "common"
+    }
+  },
+  "vault": {
+    "van_gogh_tree": [
+      "afternoon-tea.md",
+      "config.json",
+      "config.json.bak",
+      "deliverables/",
+      "logs/",
+      "meeting-prep.md",
+      "morning-coffee.md",
+      "projects/Project Van Gogh/",
+      "vault-audit.md",
+      "week.md",
+      "workbench/"
+    ],
+    "logs_tree": [
+      "afternoon_tea_latest.json",
+      "cs_latest.json",
+      "failures.jsonl",
+      "job_watch.jsonl",
+      "kpi_events.jsonl",
+      "mc_latest.json",
+      "meeting-ingest.log",
+      "morning_coffee_latest.json",
+      "mp_latest.json",
+      "runs.jsonl",
+      "skill_usage.json",
+      "update-log.jsonl",
+      "week_review_latest.full.json"
+    ],
+    "config": {
+      "user": {
+        "full_name": "Placeholder Person",
+        "first_name": "Placeholder",
+        "timezone": "America/Los_Angeles"
+      },
+      "accounts": [
+        {
+          "provider": "google",
+          "email": "placeholder@example.com",
+          "label": "Personal",
+          "is_primary": true
+        },
+        {
+          "provider": "microsoft",
+          "email": "placeholder@example.org",
+          "label": "Work",
+          "is_primary": false
+        }
+      ],
+      "businesses": [
+        "business-a",
+        "business-b",
+        "business-c",
+        "personal"
+      ],
+      "notetaker": {
+        "provider": "granola"
+      },
+      "digest_enabled": null,
+      "obsidian": {
+        "hotcache_relpath": "wiki/hotcache.md",
+        "sources_relpath": "wiki/sources",
+        "entities_relpath": "wiki/entities",
+        "hotcache_active_threads_heading": "Active Threads"
+      }
+    },
+    "wiki_sources_md_count": 548,
+    "wiki_entities_md_count": 94,
+    "hotcache_active_deal_headings": 16
+  },
+  "scheduler": {
+    "platform": "darwin",
+    "loaded_labels": [
+      "com.monet.job-watch",
+      "com.monet.ingest-workspace",
+      "com.monet.meeting-ingest"
+    ]
+  }
+}

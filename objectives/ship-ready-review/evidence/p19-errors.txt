@@ -1,0 +1,15 @@
+
+1. No vault pointer (a fresh machine, or a moved vault)
+     ERROR: Vault pointer not found at /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-err-wwr_xttb/vault-pointer. Run /van-gogh:install-van-gogh to set up Project Van Gogh.
+
+2. No follow-ups ledger (they have not started one)
+     ERROR: Vault pointer not found at /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-err-wwr_xttb/vault-pointer. Run /van-gogh:install-van-gogh to set up Project Van Gogh.
+
+2b. Config present, ledger missing
+     MEMORY_NOT_FOUND: no follow-up ledger at /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-err-wwr_xttb/nope.md
+     Set follow_ups.memory_path in config.json or pass --memory PATH.
+
+3. No `claude` on PATH (the CLI was never installed)
+     ERROR: The 'claude' CLI was not found on PATH. Install Claude Code and make sure `claude` is on your PATH before running this script.
+
+RESULT: PASS

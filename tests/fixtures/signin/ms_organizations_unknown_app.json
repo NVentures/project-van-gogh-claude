@@ -1,0 +1,6 @@
+{
+  "_source": "CAPTURED 2026-10-01: GET https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize with a well-formed app id nobody registered returned HTTP 200 and the ordinary sign-in page; the only fault marker is arrValErrs/sErrorCode 50059 in the embedded $Config (a real multi-tenant app carries 50058 there). The body is trimmed to the title and the $Config keys around the marker, in captured order; sWAMChannel is invented.",
+  "status": 200,
+  "location": "",
+  "body": "<html><head><title>Sign in to your account</title></head><body><script>//<![CDATA[\n$Config={\"fShowPersistentCookiesWarning\":false,\"fAllowPhoneInput\":true,\"fAllowSkypeNameLogin\":true,\"iMaxPollErrors\":5,\"iPollingTimeout\":300,\"srsSuccess\":true,\"fShowSwitchUser\":true,\"arrValErrs\":[\"50059\"],\"sErrorCode\":\"50059\",\"sWAMChannel\":\"00000000-1111-4222-8333-444444444444\",\"sErrTxt\":\"\",\"sResetPasswordPrefillParam\":\"username\",\"urlPost\":\"/common/login\"};\n//]]></script></body></html>"
+}

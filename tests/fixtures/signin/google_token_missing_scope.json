@@ -1,0 +1,7 @@
+{
+  "_source": "CAPTURED 2026-10-01: one real refresh_token grant through google_client (the POST every briefing makes to https://oauth2.googleapis.com/token) for the owner's Personal account returned exactly these four keys: access_token (str), expires_in (int), scope (str, space separated), token_type (str). No refresh_token or id_token comes back on a refresh. access_token is invented; expires_in and token_type are the captured values; scope is the captured list in the captured order with https://www.googleapis.com/auth/calendar removed, which is what an unticked Calendar box produces.",
+  "access_token": "ya29.a0AfB_byInventedAccessTokenValue0000000000000000000000000000",
+  "expires_in": 3599,
+  "scope": "https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/contacts.other.readonly https://www.googleapis.com/auth/gmail.send",
+  "token_type": "Bearer"
+}

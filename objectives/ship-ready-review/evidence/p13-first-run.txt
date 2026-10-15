@@ -1,0 +1,46 @@
+A clean machine: no state dir contents, no vault pointer, no config.
+  state dir: /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-state-enol8iue  (empty: True)
+  vault:     /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-vault-c5kphq4s/My Vault
+
+1. Scaffold the vault
+  Scaffolding vault at: /private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-vault-c5kphq4s/My Vault
+  created  raw/assets/
+  created  wiki/sources/
+  created  wiki/entities/
+  created  wiki/projects/
+  created  wiki/assets/
+  ... 18 lines total
+
+2. Write the vault pointer and the config, as the install skill does
+  pointer: /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-state-enol8iue/vault-pointer
+  config:  /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-vault-c5kphq4s/My Vault/van-gogh/config.json
+
+3. Load config through the real loader, with nothing primed
+  vault:       /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-vault-c5kphq4s/My Vault
+  businesses:  ['personal']
+  priorities:  []
+  judgment:    True (default)
+  memory sync: False
+  meta keys:   28
+
+4. Render a briefing section from fixture mail
+  ──────────────────────────────────────────────
+  PERSONAL · you have not said what matters here yet
+  ──────────────────────────────────────────────
+  
+  Everything else
+    · nothing moving on this
+  
+  ──────────────────────────────────────────────
+  NOT SORTED · these did not match any part of your work
+  ──────────────────────────────────────────────
+  
+  Everything else
+    Late:            · [ ] Contract needs your signature by Friday · 2 days late
+
+5. Nothing landed outside the temp dirs
+  ~/.config/van-gogh/vault-pointer exists: False
+
+cleaned up /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-state-enol8iue and /var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-firstrun-vault-c5kphq4s
+
+RESULT: PASS

@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "arm": "serial",
+  "code_sha": "85b11d5c8088b5e7e8c099cd8ab6a76bf0cb54d5",
+  "repo": "/private/tmp/claude-501/-Users-nobelchang-Documents-Van-Gogh-Full-Repo/62fcb992-f0bb-40ae-8869-4400acd745cf/scratchpad/vg-base/project-van-gogh",
+  "tree": {
+    "dirty": false,
+    "modified_files": 0
+  },
+  "started": "2026-10-01T17:32:30",
+  "python": "~/Documents/Van Gogh Full Repo/project-van-gogh/.venv/bin/python",
+  "temp": {
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-lc6h35df",
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-dcre5rie",
+    "kept": false
+  },
+  "isolation": {
+    "vault": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-dcre5rie",
+    "van_gogh_root": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-dcre5rie/van-gogh",
+    "logs_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-vault-dcre5rie/van-gogh/logs",
+    "state_dir": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-lc6h35df",
+    "env_file": "/private/var/folders/25/q4wpx_t10nl_fpwqd1j__3p80000gn/T/vg-harness-state-lc6h35df/.env"
+  },
+  "real_hashes": {
+    "before": {
+      "env": "746781ad1b15085c6908a05c651b208654b7109bdd374bc1982535bafa9b5db8",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 548
+    },
+    "after": {
+      "env": "746781ad1b15085c6908a05c651b208654b7109bdd374bc1982535bafa9b5db8",
+      "config": "662b787bbdc07acd0e7b4f1820b022f148cd96ccf61c1f82ac0ef1f72dfc0464",
+      "real_sources_count": 548
+    },
+    "unchanged": true
+  },
+  "stages": {
+    "scan": {
+      "seconds": 122.5,
+      "rc": 0,
+      "counts": {
+        "threads_scanned": 504,
+        "sections": {
+          "waiting_on_user": 5,
+          "inbox_pending": 180,
+          "filtered_pending": 270,
+          "cold_urgent": 48,
+          "cold_monitor": 1,
+          "suppressed": 0
+        },
+        "since_days": 60,
+        "errors": 0
+      },
+      "error": null
+    },
+    "propose": {
+      "seconds": 0.1,
+      "rc": 0,
+      "counts": {
+        "deals": 15,
+        "entities": 14
+      },
+      "error": null
+    },
+    "apply": {
+      "seconds": 0.1,
+      "rc": 0,
+      "counts": {
+        "deals_written": 12,
+        "entities_written": 13,
+        "ticked_deals": 15,
+        "ticked_entities": 14
+      },
+      "error": null
+    },
+    "ingest": {
+      "seconds": 275.2,
+      "rc": 0,
+      "counts": {
+        "available": 10,
+        "list_seconds": 0.6,
+        "list_rc": 0,
+        "filed": 10,
+        "reported_ingested": 10,
+        "reported_skipped": 0,
+        "ingested_ok": true,
+        "backfilled": true,
+        "errors": []
+      },
+      "error": null
+    },
+    "first_briefing_data": {
+      "seconds": 109.3,
+      "rc": 0,
+      "counts": {
+        "threads": 446,
+        "sections": {
+          "waiting_on_user": 4,
+          "inbox_pending": 271,
+          "filtered_pending": 169,
+          "cold_urgent": 0,
+          "cold_monitor": 2,
+          "suppressed": 0
+        },
+        "calendar": 32,
+        "errors": 0
+      },
+      "error": null
+    }
+  },
+  "total_seconds": 507.2,
+  "wall_seconds": 508.1,
+  "floors": {
+    "checked": [
+      "threads scanned 504 >= 50",
+      "deals proposed 15 >= 1",
+      "meetings filed 10 == min(10, 10) = 10"
+    ],
+    "failures": [],
+    "ok": true
+  },
+  "pages": {
+    "bae88241498282c7": "ba8a5783c1dd690fe3ecad2fe12ef5294dd8a8a5d4d29a37c5ef11edbe5864e8",
+    "4951b7dce73cd742": "ad64c4f19e5e6a5693a92190a883b0b776507de1859b5ad249e9f88d70147b2a",
+    "0d440816e89da707": "1dbfbc23226b9d652872b03d3bbc11eb38a907f496444649e683b337332ef10b",
+    "b68ccfe5d4320883": "96ef98559defd2e3420d37273968fd0f396c1e5e56f35c81dbc7ccc445689c4d",
+    "b756a5307f18117e": "1d2ffedeb1e44db2a77d168395e0e7d1addbfcd130d985be4e14d1fe4f9b8b34",
+    "7c2dee5522bf20f8": "f4e46f265ab4ade555467c8f458ef9806b75b41ae67b3ce4a1adc55e403c52be",
+    "69b8507d9088cdac": "853d6aa9398d2019787693fb3134edc2ecfa2c48667bb930052e8ce1de1e5e79",
+    "18a92458e0ab44d1": "21aeb3181fc743d90660cd53d97ab8e6f5bae6702bad8f2bfe7a63b7d2e95e88",
+    "5e3836653d135570": "93042fb559e64386c799b90fea5d2f609976c96561e6488dd9851552ebb7a128",
+    "44cad21e2040cd1d": "f87b4047efeab0e4ff64d7438da603d378ef560183c7bb47ae65c614b0f66bff",
+    "a870f0b8d99ba019": "4e0508cc61d854ab9d618e49ff3f742103c82e6b9c41484944169ce7a24ec0ee"
+  },
+  "errors": [],
+  "finished": "2026-10-01T17:40:58"
+}
